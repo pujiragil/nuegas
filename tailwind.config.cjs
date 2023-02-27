@@ -12,6 +12,10 @@ module.exports = {
       200: "#54577A",
       300: "#8E92BC",
     },
+    tertiary: {
+      100: "#546FFF",
+      200: "#BAC8FF",
+    },
     extend: {},
   },
   plugins: [],
