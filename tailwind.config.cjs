@@ -16,7 +16,11 @@ module.exports = {
       100: "#546FFF",
       200: "#BAC8FF",
     },
-    extend: {},
+    extend: {
+      maxWidth: {
+        "2xl": "1440px",
+      },
+    },
   },
   plugins: [],
 };
