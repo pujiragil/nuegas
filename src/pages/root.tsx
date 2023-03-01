@@ -1,7 +1,7 @@
-import React from "react";
+import BaseLayout from "../components/Layouts/BaseLayout";
 
 const Root = () => {
-  return <div>Root</div>;
+  return <BaseLayout />;
 };
 
 export default Root;
