@@ -1,8 +1,11 @@
 import { useState } from "react";
 import NavList from "./NavList";
+import NavProfile from "./NavProfile";
 
-const iconStyle: string =
+const iconWrapper: string =
   "w-11 h-11 p-3 rounded-full border border-primary-300 cursor-pointer hover:bg-primary-300";
+
+const icon: string = "w-6 h-auto object-cover cursor-pointer";
 
 const NavMobile = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -12,42 +15,25 @@ const NavMobile = () => {
       <div className="flex justify-between">
         {/* Hamburger Navigation */}
         <div
-          className={iconStyle}
+          className={iconWrapper}
           onClick={() => setIsOpen((prevOpen) => !prevOpen)}
         >
           {isOpen ? (
             <img
-              className="w-6 h-auto object-cover cursor-pointer"
+              className={icon}
               src="close-hamburger.svg"
               alt="close-hamburger"
             />
           ) : (
-            <img
-              className="w-6 h-auto object-cover cursor-pointer"
-              src="/hamburger.svg"
-              alt="hamburger"
-            />
+            <img className={icon} src="/hamburger.svg" alt="hamburger" />
           )}
         </div>
 
         {/* Profile Navigation */}
-        <div className="flex gap-4 items-center">
-          <div className={iconStyle}>
-            <img
-              className="w-auto object-cover"
-              src="notification.svg"
-              alt="notification"
-            />
-          </div>
-
-          <img
-            className="w-11 h-auto object-cover"
-            src="/profile.png"
-            alt="profile"
-          />
-        </div>
+        <NavProfile />
       </div>
 
+      {/* Navbar Mobile List */}
       {isOpen && (
         <div className="mobile-navlist">
           <NavList />
