@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Overview, Root } from "../pages";
+import { Mentors, Message, Overview, Root, Settings, Task } from "../pages";
 
 const router = createBrowserRouter([
   {
@@ -9,6 +9,22 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Overview />,
+      },
+      {
+        path: "task",
+        element: <Task />,
+      },
+      {
+        path: "mentors",
+        element: <Mentors />,
+      },
+      {
+        path: "message",
+        element: <Message />,
+      },
+      {
+        path: "settings",
+        element: <Settings />,
       },
     ],
   },
