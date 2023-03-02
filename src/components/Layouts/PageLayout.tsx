@@ -5,7 +5,7 @@ interface PageProps {
 }
 
 const PageLayout = ({ children }: PageProps) => {
-  return <main className="p-8 w-full">{children}</main>;
+  return <main className="w-full">{children}</main>;
 };
 
 export default PageLayout;
