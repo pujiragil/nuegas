@@ -1,7 +1,7 @@
-import BaseLayout from "../components/Layouts/BaseLayout";
+import RootLayout from "../components/Layouts/RootLayout";
 
 const Root = () => {
-  return <BaseLayout />;
+  return <RootLayout />;
 };
 
 export default Root;
