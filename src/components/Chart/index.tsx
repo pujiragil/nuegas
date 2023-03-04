@@ -30,7 +30,7 @@ const Chart = () => {
       </div>
       <div className="w-full h-40 md:w-[422px] bg-primary-100 rounded-xl p-5">
         <ResponsiveContainer>
-          <LineChart margin={{ left: 0, right: 0 }} data={datas}>
+          <LineChart margin={{ left: 0, right: 0, top: 10 }} data={datas}>
             <Tooltip
               content={<CustomTooltip />}
               wrapperStyle={{
@@ -39,9 +39,11 @@ const Chart = () => {
                 boxShadow: "none",
               }}
             />
-            <XAxis dataKey="date" />
-            <YAxis width={20} />
+            <XAxis padding={{ left: 20 }} strokeWidth={0} dataKey="date" />
+            <YAxis strokeWidth={0} width={25} />
             <Line
+              dot={false}
+              activeDot={{ r: 6 }}
               strokeWidth={3}
               type="monotone"
               dataKey="task"
