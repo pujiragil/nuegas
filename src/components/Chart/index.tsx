@@ -25,6 +25,7 @@ const datas: Array<Datas> = [
 ];
 
 const Chart = () => {
+  const [isShow, setIsShow] = useState<boolean>(false);
   const [selectList, setSelectedList] = useState<string>("");
   const lists: string[] = ["This Week", "Last Week"];
 
@@ -33,7 +34,10 @@ const Chart = () => {
       <div className="flex items-center justify-between">
         <p>Activity</p>
         <div className="text-xs relative">
-          <div className="flex items-center gap-2 cursor-pointer">
+          <div
+            onClick={() => setIsShow((prevShow) => !prevShow)}
+            className="flex items-center gap-2 cursor-pointer"
+          >
             {selectList ? (
               <>
                 <p>{selectList}</p>
@@ -46,16 +50,21 @@ const Chart = () => {
               </>
             )}
           </div>
-          <ul className="z-10 mt-2 left-0 absolute bg-primary-100 w-max border border-secondary-100 rounded-xl flex flex-col overflow-hidden">
-            {lists.map((list) => (
-              <li
-                onClick={() => setSelectedList(list)}
-                className="cursor-pointer p-2.5 hover:bg-tertiary-100 hover:text-primary-100 transition-all duration-200"
-              >
-                {list}
-              </li>
-            ))}
-          </ul>
+          {isShow && (
+            <ul className="z-10 mt-2 left-0 absolute bg-primary-100 w-max border border-secondary-100 rounded-xl flex flex-col overflow-hidden">
+              {lists.map((list) => (
+                <li
+                  onClick={() => {
+                    setSelectedList(list);
+                    setIsShow(false);
+                  }}
+                  className="cursor-pointer p-2.5 hover:bg-tertiary-100 hover:text-primary-100 transition-all duration-200"
+                >
+                  {list}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
       <div className="w-full h-40 md:w-[422px] bg-primary-100 rounded-xl p-5">
