@@ -2,29 +2,63 @@ import arrow from "../../assets/arrow.svg";
 import ActivityChart from "./AcitivityChart";
 import React, { useState } from "react";
 
-type Datas = {
+type List = {
   day: string;
   task: number;
 };
 
-const datas: Array<Datas> = [
-  { day: "S", task: 4 },
-  { day: "M", task: 12 },
-  { day: "T", task: 5 },
-  { day: "W", task: 7 },
-  { day: "TH", task: 3 },
-  { day: "F", task: 6 },
-  { day: "ST", task: 2 },
-];
+type TaskList = {
+  "this week": Array<List>;
+  "last week": Array<List>;
+  default: Array<List>;
+};
 
+const taskList: TaskList = {
+  "this week": [
+    { day: "S", task: 4 },
+    { day: "M", task: 12 },
+    { day: "T", task: 5 },
+    { day: "W", task: 7 },
+    { day: "TH", task: 3 },
+    { day: "F", task: 6 },
+    { day: "ST", task: 2 },
+  ],
+  "last week": [
+    { day: "S", task: 7 },
+    { day: "M", task: 2 },
+    { day: "T", task: 6 },
+    { day: "W", task: 4 },
+    { day: "TH", task: 12 },
+    { day: "F", task: 3 },
+    { day: "ST", task: 3 },
+  ],
+  default: [
+    { day: "S", task: 0 },
+    { day: "M", task: 0 },
+    { day: "T", task: 0 },
+    { day: "W", task: 0 },
+    { day: "TH", task: 0 },
+    { day: "F", task: 0 },
+    { day: "ST", task: 0 },
+  ],
+};
 const Chart = () => {
   const [selectList, setSelectedList] = useState<string>("");
+  const datas = () => {
+    if (!selectList) {
+      return taskList["default"];
+    } else if (selectList === "This Week") {
+      return taskList["this week"];
+    } else {
+      return taskList["last week"];
+    }
+  };
 
   return (
     <div className="flex flex-col gap-5 p-5 rounded-xl bg-primary-300 md:w-fit">
       <SelectTask select={selectList} onSelect={setSelectedList} />
       <div className="w-full h-40 md:w-[422px] bg-primary-100 rounded-xl p-5">
-        <ActivityChart datas={datas} />
+        <ActivityChart datas={datas()} />
       </div>
     </div>
   );
