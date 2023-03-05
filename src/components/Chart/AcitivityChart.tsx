@@ -27,7 +27,7 @@ const ActivityChart = ({ datas }: ActivityChartProps) => {
           }}
         />
         <XAxis padding={{ left: 20 }} strokeWidth={0} dataKey="day" />
-        <YAxis strokeWidth={0} width={25} />
+        <YAxis padding={{ bottom: 10 }} strokeWidth={0} width={25} />
         <Line
           dot={false}
           activeDot={<CustomActiveDot />}
