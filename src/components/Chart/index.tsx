@@ -1,3 +1,4 @@
+import { FC, ReactElement } from "react";
 import {
   ResponsiveContainer,
   LineChart,
@@ -30,7 +31,7 @@ const Chart = () => {
       </div>
       <div className="w-full h-40 md:w-[422px] bg-primary-100 rounded-xl p-5">
         <ResponsiveContainer>
-          <LineChart margin={{ left: 0, right: 0, top: 10 }} data={datas}>
+          <LineChart margin={{ left: 0, top: 10, right: 10 }} data={datas}>
             <Tooltip
               content={<CustomTooltip />}
               wrapperStyle={{
@@ -43,7 +44,7 @@ const Chart = () => {
             <YAxis strokeWidth={0} width={25} />
             <Line
               dot={false}
-              activeDot={{ r: 6 }}
+              activeDot={<CustomActiveDot />}
               strokeWidth={3}
               type="monotone"
               dataKey="task"
@@ -74,6 +75,23 @@ const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
   }
 
   return null;
+};
+
+interface CustomActiveDotProps {
+  cx?: number;
+  cy?: number;
+}
+
+const CustomActiveDot: FC<CustomActiveDotProps> = ({
+  cx,
+  cy,
+}): ReactElement => {
+  return (
+    <>
+      <circle cx={cx} cy={cy} r={8} fill="#546FFF" />
+      <circle cx={cx} cy={cy} r={4} fill="#FFFFFF" />
+    </>
+  );
 };
 
 export default Chart;
