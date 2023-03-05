@@ -14,9 +14,12 @@ const Dashboard = (): ReactElement => {
       />
 
       <div className="px-6 py-8 bg-primary-100 md:bg-primary-200 md:p-8">
-        {/* ProgressBar Component */}
-        <ProgressBar />
-        <Chart />
+        <div className="flex flex-col gap-8 md:flex-row">
+          {/* ProgressBar Component */}
+          <ProgressBar />
+          {/* Chart Component */}
+          <Chart />
+        </div>
       </div>
     </>
   );
