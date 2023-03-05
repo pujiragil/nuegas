@@ -1,27 +1,20 @@
 import arrow from "../../assets/arrow.svg";
-import { FC, ReactElement, useState } from "react";
-import {
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-} from "recharts";
+import ActivityChart from "./AcitivityChart";
+import { useState } from "react";
 
 type Datas = {
-  date: string;
+  day: string;
   task: number;
 };
 
 const datas: Array<Datas> = [
-  { date: "S", task: 4 },
-  { date: "M", task: 12 },
-  { date: "T", task: 5 },
-  { date: "W", task: 7 },
-  { date: "TH", task: 3 },
-  { date: "F", task: 6 },
-  { date: "ST", task: 2 },
+  { day: "S", task: 4 },
+  { day: "M", task: 12 },
+  { day: "T", task: 5 },
+  { day: "W", task: 7 },
+  { day: "TH", task: 3 },
+  { day: "F", task: 6 },
+  { day: "ST", task: 2 },
 ];
 
 const Chart = () => {
@@ -68,67 +61,9 @@ const Chart = () => {
         </div>
       </div>
       <div className="w-full h-40 md:w-[422px] bg-primary-100 rounded-xl p-5">
-        <ResponsiveContainer>
-          <LineChart margin={{ left: 0, top: 10, right: 10 }} data={datas}>
-            <Tooltip
-              content={<CustomTooltip />}
-              wrapperStyle={{
-                background: "none",
-                border: "none",
-                boxShadow: "none",
-              }}
-            />
-            <XAxis padding={{ left: 20 }} strokeWidth={0} dataKey="date" />
-            <YAxis strokeWidth={0} width={25} />
-            <Line
-              dot={false}
-              activeDot={<CustomActiveDot />}
-              strokeWidth={3}
-              type="monotone"
-              dataKey="task"
-              stroke="#141522"
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <ActivityChart datas={datas} />
       </div>
     </div>
-  );
-};
-
-interface CustomTooltipProps {
-  active?: boolean;
-  payload?: any[];
-}
-
-const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
-  if (active && payload && payload.length) {
-    return (
-      <div
-        style={{ border: "none" }}
-        className="px-4 py-2 bg-secondary-100 rounded-xl text-primary-100 border-none"
-      >
-        <p>{payload[0].value} Task</p>
-      </div>
-    );
-  }
-
-  return null;
-};
-
-interface CustomActiveDotProps {
-  cx?: number;
-  cy?: number;
-}
-
-const CustomActiveDot: FC<CustomActiveDotProps> = ({
-  cx,
-  cy,
-}): ReactElement => {
-  return (
-    <>
-      <circle cx={cx} cy={cy} r={8} fill="#546FFF" />
-      <circle cx={cx} cy={cy} r={4} fill="#FFFFFF" />
-    </>
   );
 };
 
