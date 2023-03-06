@@ -55,9 +55,9 @@ const Chart = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 p-5 rounded-xl bg-primary-300 md:w-fit">
+    <div className="flex flex-col gap-5 p-5 rounded-xl bg-primary-300 w-full">
       <SelectTask select={selectList} onSelect={setSelectedList} />
-      <div className="w-full h-40 md:w-[422px] bg-primary-100 rounded-xl p-5">
+      <div className="w-full h-40 bg-primary-100 rounded-xl p-5">
         <ActivityChart datas={datas()} />
       </div>
     </div>
