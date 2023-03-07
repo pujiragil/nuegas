@@ -1,9 +1,11 @@
 import { ReactElement } from "react";
-import { Mentor, Task, TaskDetail } from "../components/Card";
+import { TaskDetail } from "../components/Card";
 import Chart from "../components/Chart";
 import ProfileLayout from "../components/Layouts/ProfileLayout";
 import ProgressBar from "../components/Progress";
 import "../components/Progress/progressStyle.css";
+import MentorSlider from "../components/Slider/Mentor";
+import TaskSlider from "../components/Slider/Task";
 
 const Dashboard = (): ReactElement => {
   return (
@@ -30,23 +32,8 @@ const Dashboard = (): ReactElement => {
                 Monthly Mentors
               </h2>
             </div>
-            <div className="grid lg:grid-cols-2 md:gap-8">
-              <Mentor
-                avatar="/profile.png"
-                name="Jokowi banteng"
-                jobTitle="Presiden Wakanda"
-                tasks={40}
-                stars={4.0}
-                reviews={750}
-              />
-              <Mentor
-                avatar="/profile.png"
-                name="Jokowi banteng"
-                jobTitle="Presiden Wakanda"
-                tasks={40}
-                stars={4.0}
-                reviews={750}
-              />
+            <div>
+              <MentorSlider />
             </div>
           </div>
 
@@ -57,21 +44,8 @@ const Dashboard = (): ReactElement => {
                 Upcoming Task
               </h2>
             </div>
-            <div className="grid lg:grid-cols-2 md:gap-8">
-              <Task
-                thumbnail="/task.png"
-                title="Creating Awesome Mobile Apps"
-                category="UI UX Design"
-                progress={75}
-                deadline={3}
-              />
-              <Task
-                thumbnail="/task.png"
-                title="Creating Perfect Website"
-                category="Web Developer"
-                progress={85}
-                deadline={4}
-              />
+            <div>
+              <TaskSlider />
             </div>
           </div>
         </div>
