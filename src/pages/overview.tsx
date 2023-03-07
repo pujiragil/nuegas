@@ -8,7 +8,7 @@ import "../components/Progress/progressStyle.css";
 const Dashboard = (): ReactElement => {
   return (
     <div className="flex flex-col md:flex-row">
-      <div className="w-full md:w-8/12">
+      <div className="w-full md:w-7/12 lg:w-8/12">
         {/* Profile Layout */}
         <ProfileLayout
           titleProfile="Hi, Masbro"
@@ -16,7 +16,7 @@ const Dashboard = (): ReactElement => {
         />
 
         <div className="px-6 py-8 bg-primary-100 space-y-8 overflow-hidden md:bg-primary-200 md:p-8">
-          <div className="flex flex-col gap-8 md:flex-row">
+          <div className="flex flex-col gap-8 lg:flex-row">
             {/* ProgressBar Component */}
             <ProgressBar />
             {/* Chart Component */}
@@ -30,7 +30,7 @@ const Dashboard = (): ReactElement => {
                 Monthly Mentors
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 md:gap-8">
+            <div className="grid lg:grid-cols-2 md:gap-8">
               <Mentor
                 avatar="/profile.png"
                 name="Jokowi banteng"
@@ -57,7 +57,7 @@ const Dashboard = (): ReactElement => {
                 Upcoming Task
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 md:gap-8">
+            <div className="grid lg:grid-cols-2 md:gap-8">
               <Task
                 thumbnail="/task.png"
                 title="Creating Awesome Mobile Apps"

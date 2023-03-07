@@ -2,8 +2,8 @@ import CircularProgressbar from "./CircularProgress";
 
 const ProgressBar = () => {
   return (
-    <div className="bg-secondary-100 text-primary-100 rounded-lg w-full max-w-[428px] p-5 mx-auto md:mx-0 md:w-fit">
-      <div className="flex items-center justify-between md:flex-col md:gap-4">
+    <div className="bg-secondary-100 text-primary-100 rounded-lg w-full max-w-[428px] p-5 mx-auto md:mx-0 lg:w-fit">
+      <div className="flex items-center justify-between lg:flex-col lg:gap-4">
         <div className="flex flex-col gap-5">
           <p className="font-semibold">Running Task</p>
           <p className="text-[32px] font-semibold">65</p>

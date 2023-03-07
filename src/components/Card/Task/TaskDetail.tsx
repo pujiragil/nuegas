@@ -1,6 +1,6 @@
 const TaskDetail = () => {
   return (
-    <div className="bg-primary-300 p-8 flex flex-col gap-8 w-full md:w-4/12">
+    <div className="bg-primary-300 p-8 flex flex-col gap-8 w-full md:w-5/12 lg:w-4/12">
       <div className="p-5 bg-primary-100 rounded-xl flex flex-col gap-10">
         <div className="text-center">
           <p className="font-semibold text-sm text-secondary-100">July 2022</p>
