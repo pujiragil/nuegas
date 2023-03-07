@@ -60,7 +60,7 @@ const Dashboard = (): ReactElement => {
             <div className="grid md:grid-cols-2 md:gap-8">
               <Task
                 thumbnail="/task.png"
-                title="Creating Mobile App Design"
+                title="Creating Awesome Mobile Apps"
                 category="UI UX Design"
                 progress={75}
                 deadline={3}

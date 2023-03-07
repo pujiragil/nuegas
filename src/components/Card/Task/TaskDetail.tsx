@@ -56,6 +56,11 @@ const TaskDetail = () => {
               />
               <p className="font-medium text-secondary-100">1 Hour</p>
             </div>
+            <img
+              className="h-6 w-auto object-cover"
+              src="/team.png"
+              alt="team"
+            />
           </div>
         </div>
         <div className="flex flex-col gap-14">

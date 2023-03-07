@@ -43,6 +43,7 @@ const Task: FC<TaskProps> = ({
           <img className="h-6 w-6 object-cover" src="/time.svg" alt="time" />
           <p className="font-medium text-secondary-100">{deadline} Days left</p>
         </div>
+        <img className="h-6 w-auto object-cover" src="/team.png" alt="team" />
       </div>
     </section>
   );
