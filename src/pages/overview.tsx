@@ -4,7 +4,7 @@ import Chart from "../components/Chart";
 import ProfileLayout from "../components/Layouts/ProfileLayout";
 import ProgressBar from "../components/Progress";
 import "../components/Progress/progressStyle.css";
-import TaskDetail from "../components/Task";
+import TaskDetail from "../components/Task/TaskDetail";
 
 const Dashboard = (): ReactElement => {
   return (
