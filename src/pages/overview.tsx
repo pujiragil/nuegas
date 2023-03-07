@@ -8,14 +8,14 @@ import "../components/Progress/progressStyle.css";
 const Dashboard = (): ReactElement => {
   return (
     <div className="flex flex-col md:flex-row">
-      <div className="basis-full md:basis-8/12">
+      <div className="w-full md:w-8/12">
         {/* Profile Layout */}
         <ProfileLayout
           titleProfile="Hi, Masbro"
           descProfile="Let's finish your task today!"
         />
 
-        <div className="px-6 py-8 bg-primary-100 space-y-8 md:bg-primary-200 md:p-8">
+        <div className="px-6 py-8 bg-primary-100 space-y-8 overflow-hidden md:bg-primary-200 md:p-8">
           <div className="flex flex-col gap-8 md:flex-row">
             {/* ProgressBar Component */}
             <ProgressBar />

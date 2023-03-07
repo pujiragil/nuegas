@@ -16,7 +16,7 @@ interface ActivityChartProps {
 
 const ActivityChart = ({ datas }: ActivityChartProps) => {
   return (
-    <ResponsiveContainer>
+    <ResponsiveContainer width="99%" height="99%">
       <LineChart margin={{ left: 0, top: 10, right: 10 }} data={datas}>
         <Tooltip
           content={<CustomTooltip />}
