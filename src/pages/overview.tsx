@@ -1,10 +1,9 @@
 import { ReactElement } from "react";
-import { Mentor } from "../components/Card";
+import { Mentor, Task, TaskDetail } from "../components/Card";
 import Chart from "../components/Chart";
 import ProfileLayout from "../components/Layouts/ProfileLayout";
 import ProgressBar from "../components/Progress";
 import "../components/Progress/progressStyle.css";
-import TaskDetail from "../components/Task/TaskDetail";
 
 const Dashboard = (): ReactElement => {
   return (
@@ -47,6 +46,31 @@ const Dashboard = (): ReactElement => {
                 tasks={40}
                 stars={4.0}
                 reviews={750}
+              />
+            </div>
+          </div>
+
+          {/* Tasks */}
+          <div className="flex flex-col gap-5">
+            <div className="flex items-center justify-between">
+              <h2 className="font-semibold text-secondary-100 text-xl md:text-2xl">
+                Upcoming Task
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-2 md:gap-8">
+              <Task
+                thumbnail="/task.png"
+                title="Creating Mobile App Design"
+                category="UI UX Design"
+                progress={75}
+                deadline={3}
+              />
+              <Task
+                thumbnail="/task.png"
+                title="Creating Perfect Website"
+                category="Web Developer"
+                progress={85}
+                deadline={4}
               />
             </div>
           </div>
