@@ -41,26 +41,6 @@ const MentorSlider = () => {
           reviews={750}
         />
       </SwiperSlide>
-      <SwiperSlide>
-        <Mentor
-          avatar="/profile.png"
-          name="Jokowi banteng"
-          jobTitle="Presiden Wakanda"
-          tasks={40}
-          stars={4.0}
-          reviews={750}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Mentor
-          avatar="/profile.png"
-          name="Jokowi banteng"
-          jobTitle="Presiden Wakanda"
-          tasks={40}
-          stars={4.0}
-          reviews={750}
-        />
-      </SwiperSlide>
     </Swiper>
   );
 };

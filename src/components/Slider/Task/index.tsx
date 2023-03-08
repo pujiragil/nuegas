@@ -33,24 +33,6 @@ const TaskSlider = () => {
           deadline={4}
         />
       </SwiperSlide>
-      <SwiperSlide>
-        <Task
-          thumbnail="/task.png"
-          title="Creating Awesome Mobile Apps"
-          category="UI UX Design"
-          progress={75}
-          deadline={3}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Task
-          thumbnail="/task.png"
-          title="Creating Perfect Website"
-          category="Web Developer"
-          progress={85}
-          deadline={4}
-        />
-      </SwiperSlide>
     </Swiper>
   );
 };
