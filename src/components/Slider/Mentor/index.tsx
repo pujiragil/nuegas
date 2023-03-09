@@ -4,43 +4,33 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { Mentor } from "../../Card";
+import { FC, ReactElement } from "react";
 
-const MentorSlider = () => {
+interface MentorSliderProps {
+  smSlide: number;
+  lgSlide: number;
+  sliders: ReactElement[];
+}
+
+const MentorSlider: FC<MentorSliderProps> = ({ smSlide, lgSlide, sliders }) => {
   return (
     <Swiper
+      className="mentor-slider"
       modules={[Navigation]}
       breakpoints={{
         320: {
-          slidesPerView: 1,
+          slidesPerView: smSlide,
           spaceBetween: 32,
         },
         1024: {
-          slidesPerView: 2,
+          slidesPerView: lgSlide,
           spaceBetween: 32,
         },
       }}
     >
-      <SwiperSlide>
-        <Mentor
-          avatar="/profile.png"
-          name="Jokowi banteng"
-          jobTitle="Presiden Wakanda"
-          tasks={40}
-          stars={4.0}
-          reviews={750}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Mentor
-          avatar="/profile.png"
-          name="Jokowi banteng"
-          jobTitle="Presiden Wakanda"
-          tasks={40}
-          stars={4.0}
-          reviews={750}
-        />
-      </SwiperSlide>
+      {sliders.map((slide, index) => (
+        <SwiperSlide key={index}>{slide}</SwiperSlide>
+      ))}
     </Swiper>
   );
 };
