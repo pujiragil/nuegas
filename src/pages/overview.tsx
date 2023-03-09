@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { TaskDetail } from "../components/Card";
+import { Mentor, TaskDetail } from "../components/Card";
 import Chart from "../components/Chart";
 import ProfileLayout from "../components/Layouts/ProfileLayout";
 import ProgressBar from "../components/Progress";
@@ -8,6 +8,41 @@ import MentorSlider from "../components/Slider/Mentor";
 import TaskSlider from "../components/Slider/Task";
 
 const Dashboard = (): ReactElement => {
+  const mentorSliders = [
+    <Mentor
+      avatar="/profile.png"
+      name="Jessica Jane"
+      jobTitle="Frontend Dev"
+      tasks={40}
+      stars={3.7}
+      reviews={230}
+    />,
+    <Mentor
+      avatar="/profile.png"
+      name="Jessica Jane"
+      jobTitle="Frontend Dev"
+      tasks={40}
+      stars={3.7}
+      reviews={230}
+    />,
+    <Mentor
+      avatar="/profile.png"
+      name="Jessica Jane"
+      jobTitle="Frontend Dev"
+      tasks={40}
+      stars={3.7}
+      reviews={230}
+    />,
+    <Mentor
+      avatar="/profile.png"
+      name="Jessica Jane"
+      jobTitle="Frontend Dev"
+      tasks={40}
+      stars={3.7}
+      reviews={230}
+    />,
+  ];
+
   return (
     <div className="flex flex-col md:flex-row">
       <div className="w-full md:w-7/12 lg:w-8/12">
@@ -33,7 +68,7 @@ const Dashboard = (): ReactElement => {
               </h2>
             </div>
             <div>
-              <MentorSlider />
+              <MentorSlider smSlide={1} lgSlide={2} sliders={mentorSliders} />
             </div>
           </div>
 
