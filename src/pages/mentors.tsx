@@ -14,16 +14,12 @@ const Mentors = () => {
       />
 
       <div className="bg-primary-200 flex flex-col gap-8 px-6 py-8 md:p-8">
-        <div className="space-y-[18px]">
-          <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-secondary-100 text-xl md:text-2xl">
-              Recent Mentors
-            </h2>
-          </div>
-          <div>
-            <MentorSlider smSlide={1} lgSlide={3} sliders={mentorSliders} />
-          </div>
-        </div>
+        <MentorSlider
+          heading="Recent Mentors"
+          smSlide={1}
+          lgSlide={3}
+          sliders={mentorSliders}
+        />
         <div className="space-y-[18px]">
           <div className="flex items-center justify-between">
             <h2 className="font-semibold text-secondary-100 text-xl md:text-2xl">

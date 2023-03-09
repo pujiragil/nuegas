@@ -1,48 +1,14 @@
 import { ReactElement } from "react";
-import { Mentor, Task, TaskDetail } from "../components/Card";
+import { Task, TaskDetail } from "../components/Card";
 import Chart from "../components/Chart";
 import ProfileLayout from "../components/Layouts/ProfileLayout";
 import ProgressBar from "../components/Progress";
 import "../components/Progress/progressStyle.css";
 import MentorSlider from "../components/Slider/Mentor";
 import TaskSlider from "../components/Slider/Task";
+import { mentorSliders } from "../utils/mentor";
 
 const Dashboard = (): ReactElement => {
-  const mentorSliders: ReactElement[] = [
-    <Mentor
-      avatar="/profile.png"
-      name="Jessica Jane"
-      jobTitle="Frontend Dev"
-      tasks={40}
-      stars={3.7}
-      reviews={230}
-    />,
-    <Mentor
-      avatar="/profile.png"
-      name="Jessica Jane"
-      jobTitle="Frontend Dev"
-      tasks={40}
-      stars={3.7}
-      reviews={230}
-    />,
-    <Mentor
-      avatar="/profile.png"
-      name="Jessica Jane"
-      jobTitle="Frontend Dev"
-      tasks={40}
-      stars={3.7}
-      reviews={230}
-    />,
-    <Mentor
-      avatar="/profile.png"
-      name="Jessica Jane"
-      jobTitle="Frontend Dev"
-      tasks={40}
-      stars={3.7}
-      reviews={230}
-    />,
-  ];
-
   const taskSliders: ReactElement[] = [
     <Task
       thumbnail="/task.png"
@@ -92,16 +58,12 @@ const Dashboard = (): ReactElement => {
           </div>
 
           {/* Mentors */}
-          <div className="flex flex-col gap-5">
-            <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-semibold text-secondary-100">
-                Monthly Mentors
-              </h2>
-            </div>
-            <div>
-              <MentorSlider smSlide={1} lgSlide={2} sliders={mentorSliders} />
-            </div>
-          </div>
+          <MentorSlider
+            heading="Monthly Mentors"
+            smSlide={1}
+            lgSlide={2}
+            sliders={mentorSliders}
+          />
 
           {/* Tasks */}
           <div className="flex flex-col gap-5">
