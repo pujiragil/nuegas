@@ -35,7 +35,11 @@ const Mentor: FC<MentorProps> = ({
         </div>
         <p className="text-sm font-semibold text-tertiary-100">+ Follow</p>
       </div>
-      {description && <p>{description.slice(0, 85)}...</p>}
+      {description && (
+        <p className="text-sm font-medium text-secondary-300">
+          {description.slice(0, 85)}...
+        </p>
+      )}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img className="w-6 h-6 object-cover" src="/task.svg" alt="task" />
