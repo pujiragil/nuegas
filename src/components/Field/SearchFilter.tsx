@@ -1,10 +1,17 @@
 const SearchFilter = () => {
   return (
-    <div className="flex items-center gap-6 px-6 pb-6 md:p-0 md:justify-between">
-      <input
-        className="outline-none bg-transparent py-3.5 px-7 rounded-xl border border-primary-300 w-full h-[52px] focus:ring-1 focus:ring-primary-300 md:w-1/3"
-        placeholder="Search Mentors"
-      />
+    <div className="flex items-center gap-6 px-6 pb-6 text-secondary-100 md:p-0 sm:justify-between">
+      <label
+        htmlFor="search-input"
+        className="group flex items-center gap-5 border border-primary-300 cursor-text w-full h-[52px] py-3.5 px-7 rounded-xl focus-within:ring-1 focus-within:ring-primary-300 sm:w-3/5 md:w-2/5"
+      >
+        <input
+          id="search-input"
+          className="outline-none bg-transparent w-full"
+          placeholder="Search Mentors"
+        />
+        <img className="w-5 h-5 object-cover" src="/search.svg" alt="search" />
+      </label>
       <div className="min-w-[52px] h-[52px] w-[52px] rounded-xl border border-primary-300 flex items-center justify-center hover:bg-primary-300 cursor-pointer md:hidden">
         <img className="w-6 h-6 object-cover" src="/filter.svg" alt="filter" />
       </div>
