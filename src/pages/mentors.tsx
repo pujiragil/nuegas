@@ -7,7 +7,7 @@ const Mentors = () => {
       <ProfileLayout
         titleProfile="Explore Mentors"
         background="primary"
-        children={<SearchFilter />}
+        children={<SearchFilter placeholder="Search Mentors" />}
       />
     </>
   );
