@@ -66,16 +66,12 @@ const Dashboard = (): ReactElement => {
           />
 
           {/* Tasks */}
-          <div className="flex flex-col gap-5">
-            <div className="flex items-center justify-between">
-              <h2 className="font-semibold text-secondary-100 text-xl md:text-2xl">
-                Upcoming Task
-              </h2>
-            </div>
-            <div>
-              <TaskSlider smSlide={1} lgSlide={2} sliders={taskSliders} />
-            </div>
-          </div>
+          <TaskSlider
+            heading="Upcoming Task"
+            smSlide={1}
+            lgSlide={2}
+            sliders={taskSliders}
+          />
         </div>
       </div>
 

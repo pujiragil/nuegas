@@ -1,7 +1,9 @@
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Navigation } from "swiper";
+
 import "swiper/css";
 import "swiper/css/navigation";
+
 import {
   FC,
   MouseEventHandler,
