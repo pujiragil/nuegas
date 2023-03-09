@@ -7,6 +7,7 @@ interface MentorProps {
   tasks: number;
   stars: number;
   reviews: number;
+  description?: string;
 }
 
 const Mentor: FC<MentorProps> = ({
@@ -16,6 +17,7 @@ const Mentor: FC<MentorProps> = ({
   tasks,
   stars,
   reviews,
+  description,
 }) => {
   return (
     <section className="p-5 md:p-6 flex flex-col gap-6 md:gap-5 bg-primary-100 rounded-xl">
@@ -33,6 +35,7 @@ const Mentor: FC<MentorProps> = ({
         </div>
         <p className="text-sm font-semibold text-tertiary-100">+ Follow</p>
       </div>
+      {description && <p>{description.slice(0, 85)}...</p>}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img className="w-6 h-6 object-cover" src="/task.svg" alt="task" />
