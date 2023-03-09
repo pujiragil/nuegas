@@ -12,12 +12,18 @@ import {
 } from "react";
 
 interface MentorSliderProps {
+  heading: string;
   smSlide: number;
   lgSlide: number;
   sliders: ReactElement[];
 }
 
-const MentorSlider: FC<MentorSliderProps> = ({ smSlide, lgSlide, sliders }) => {
+const MentorSlider: FC<MentorSliderProps> = ({
+  heading,
+  smSlide,
+  lgSlide,
+  sliders,
+}) => {
   const [isBeginning, setIsBeginning] = useState<boolean>(true);
   const [isEnd, setIsEnd] = useState<boolean>(false);
   const swiperRef = useRef<SwiperRef>(null);
@@ -49,7 +55,7 @@ const MentorSlider: FC<MentorSliderProps> = ({ smSlide, lgSlide, sliders }) => {
     <div className="space-y-[18px]">
       <div className="flex items-center justify-between">
         <h2 className="font-semibold text-secondary-100 text-xl md:text-2xl">
-          Recent Mentors
+          {heading}
         </h2>
         <div className="flex items-center gap-2.5">
           <SliderButton
