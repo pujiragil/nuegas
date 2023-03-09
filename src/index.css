@@ -67,3 +67,8 @@ input[type="range"]::-moz-range-thumb {
   height: calc(100vh - 70px);
   @apply absolute top-full left-0 w-full z-10 py-8 px-6 bg-primary-100;
 }
+
+.swiper.mentor-slider .swiper-wrapper {
+  min-width: 0px;
+  width: 0;
+}
