@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { Task, TaskDetail } from "../components/Card";
+import { TaskDetail } from "../components/Card";
 import Chart from "../components/Chart";
 import ProfileLayout from "../components/Layouts/ProfileLayout";
 import ProgressBar from "../components/Progress";
@@ -7,39 +7,9 @@ import "../components/Progress/progressStyle.css";
 import MentorSlider from "../components/Slider/Mentor";
 import TaskSlider from "../components/Slider/Task";
 import { mentorSliders } from "../utils/mentor";
+import { taskSliders } from "../utils/task";
 
 const Dashboard = (): ReactElement => {
-  const taskSliders: ReactElement[] = [
-    <Task
-      thumbnail="/task.png"
-      title="Creating Awesom Mobile Apps"
-      category="UI UX Design"
-      progress={75}
-      deadline={1}
-    />,
-    <Task
-      thumbnail="/task.png"
-      title="Creating Awesom Mobile Apps"
-      category="UI UX Design"
-      progress={75}
-      deadline={1}
-    />,
-    <Task
-      thumbnail="/task.png"
-      title="Creating Awesom Mobile Apps"
-      category="UI UX Design"
-      progress={75}
-      deadline={1}
-    />,
-    <Task
-      thumbnail="/task.png"
-      title="Creating Awesom Mobile Apps"
-      category="UI UX Design"
-      progress={75}
-      deadline={1}
-    />,
-  ];
-
   return (
     <div className="flex flex-col md:flex-row">
       <div className="w-full md:w-7/12 lg:w-8/12">
