@@ -7,6 +7,7 @@ import {
   Student,
   Thumbnail,
 } from "../../components/Atoms";
+import { TaskSubmission } from "../../components/Card";
 
 const assessmentList: string[] = [
   "Understanding the tools in Figma",
@@ -25,7 +26,7 @@ const TaskDetail = () => {
       />
 
       <main className="bg-primary-200 flex flex-col gap-6 p-6 md:flex-row md:gap-8 md:p-8">
-        <section className="bg-primary-100 rounded-xl space-y-8 pb-4">
+        <section className="bg-primary-100 rounded-xl space-y-8 pb-4 md:w-8/12">
           <div className="space-y-4 md:space-y-6">
             {/* Thumbnail Section */}
             <Thumbnail src="/task.png" />
@@ -53,6 +54,8 @@ const TaskDetail = () => {
             <Assessment assessments={assessmentList} />
           </div>
         </section>
+
+        <TaskSubmission />
       </main>
     </>
   );
