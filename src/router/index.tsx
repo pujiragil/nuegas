@@ -1,5 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Mentors, Message, Overview, Root, Settings, Task } from "../pages";
+import {
+  Mentors,
+  Message,
+  Overview,
+  Root,
+  Settings,
+  Task,
+  TaskDetail,
+} from "../pages";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "task",
         element: <Task />,
+      },
+      {
+        path: "task/:taskTitle",
+        element: <TaskDetail />,
       },
       {
         path: "mentors",
