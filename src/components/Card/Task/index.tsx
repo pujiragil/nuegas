@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 interface TaskProps {
   thumbnail: string;
@@ -17,11 +18,19 @@ const Task: FC<TaskProps> = ({
 }) => {
   return (
     <section className="bg-primary-100 rounded-xl p-6 space-y-4">
-      <div className="w-full rounded-xl overflow-hidden">
-        <img className="w-full h-28 object-cover" src={thumbnail} alt="task" />
-      </div>
+      <Link to="/task/s">
+        <div className="w-full rounded-xl overflow-hidden">
+          <img
+            className="w-full h-28 object-cover hover:scale-105 transition-all duration-200 ease-in"
+            src={thumbnail}
+            alt="task"
+          />
+        </div>
+      </Link>
       <div className="space-y-1">
-        <h4 className="font-semibold text-secondary-100">{title}</h4>
+        <Link to="/task/s">
+          <h4 className="font-semibold text-secondary-100">{title}</h4>
+        </Link>
         <p className="text-xs font-medium text-secondary-200">{category}</p>
       </div>
       <div className="space-y-2">
