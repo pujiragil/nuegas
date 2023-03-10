@@ -1,7 +1,7 @@
-import SearchFilter from "../components/Field/SearchFilter";
-import ProfileLayout from "../components/Layouts/ProfileLayout";
-import TaskSlider from "../components/Slider/Task";
-import { taskSliders } from "../utils/task";
+import SearchFilter from "../../components/Field/SearchFilter";
+import ProfileLayout from "../../components/Layouts/ProfileLayout";
+import TaskSlider from "../../components/Slider/Task";
+import { taskSliders } from "../../utils/task";
 
 const Task = () => {
   return (

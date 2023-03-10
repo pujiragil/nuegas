@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-import { mentorSliders, mentorLists } from "../utils/mentor";
-import SearchFilter from "../components/Field/SearchFilter";
-import ProfileLayout from "../components/Layouts/ProfileLayout";
-import MentorSlider from "../components/Slider/Mentor";
+import { mentorSliders, mentorLists } from "../../utils/mentor";
+import SearchFilter from "../../components/Field/SearchFilter";
+import ProfileLayout from "../../components/Layouts/ProfileLayout";
+import MentorSlider from "../../components/Slider/Mentor";
 
 const Mentors = () => {
   return (

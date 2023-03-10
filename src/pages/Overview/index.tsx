@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
-import { TaskDetail } from "../components/Card";
-import Chart from "../components/Chart";
-import ProfileLayout from "../components/Layouts/ProfileLayout";
-import ProgressBar from "../components/Progress";
-import "../components/Progress/progressStyle.css";
-import MentorSlider from "../components/Slider/Mentor";
-import TaskSlider from "../components/Slider/Task";
-import { mentorSliders } from "../utils/mentor";
-import { taskSliders } from "../utils/task";
+import { TaskDetail } from "../../components/Card";
+import Chart from "../../components/Chart";
+import ProfileLayout from "../../components/Layouts/ProfileLayout";
+import ProgressBar from "../../components/Progress";
+import "../../components/Progress/progressStyle.css";
+import MentorSlider from "../../components/Slider/Mentor";
+import TaskSlider from "../../components/Slider/Task";
+import { mentorSliders } from "../../utils/mentor";
+import { taskSliders } from "../../utils/task";
 
 const Dashboard = (): ReactElement => {
   return (

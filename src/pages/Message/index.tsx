@@ -1,4 +1,4 @@
-import ProfileLayout from "../components/Layouts/ProfileLayout";
+import ProfileLayout from "../../components/Layouts/ProfileLayout";
 
 const Message = () => {
   return (
