@@ -11,7 +11,7 @@ const Task = () => {
         background="primary"
         children={<SearchFilter placeholder="Search Task" />}
       />
-      <div className="flex flex-col gap-8 px-6 py-8 md:p-8">
+      <div className="bg-primary-200 flex flex-col gap-8 px-6 py-8 md:p-8">
         <TaskSlider
           heading="Time Limit"
           smSlide={1}
