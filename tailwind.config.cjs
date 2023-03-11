@@ -24,6 +24,9 @@ module.exports = {
           "2xl": "1440px",
         },
       },
+      fontSize: {
+        "3xl": "2rem",
+      },
     },
   },
   plugins: [],
