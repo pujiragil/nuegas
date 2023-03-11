@@ -4,7 +4,7 @@ const Message = () => {
   return (
     <>
       <ProfileLayout titleProfile="Message" background="primary">
-        <div className="px-6 pb-6">
+        <div className="px-6 pb-6 md:hidden">
           <div className="flex items-center gap-5 py-3.5 px-7 rounded-xl border border-primary-300 focus-within:ring-1 focus-within:ring-primary-300">
             <input
               className="border-none outline-none w-full text-xs font-base text-secondary-100"
@@ -19,162 +19,48 @@ const Message = () => {
         </div>
       </ProfileLayout>
 
-      <div className="flex flex-col gap-4 divide-y divide-primary-300 p-6">
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="w-12 h-12 object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2 w-full">
-            <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm text-secondary-100">
-                Angel Saris
-              </p>
-              <p className="font-base text-xs text-secondary-300">1m Ago</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="font-base text-xs text-secondary-100">
-                Thank you very much...
-              </p>
-              <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-            </div>
-          </div>
-        </div>
+      <div className="flex flex-col p-6 relative bg-primary-100 divide-y divide-primary-300">
+        <ChatPerson isActive={true} />
+        <ChatPerson isActive={false} />
+        <ChatPerson isActive={false} />
+        <ChatPerson isActive={false} />
+        <ChatPerson isActive={false} />
+        <ChatPerson isActive={false} />
+        <ChatPerson isActive={false} />
+        <ChatPerson isActive={false} />
+      </div>
+    </>
+  );
+};
 
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="w-12 h-12 object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2 w-full">
-            <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm text-secondary-100">
-                Angel Saris
-              </p>
-              <p className="font-base text-xs text-secondary-300">1m Ago</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="font-base text-xs text-secondary-100">
-                Thank you very much...
-              </p>
-              <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-            </div>
+const ChatPerson = ({ isActive }: { isActive: boolean }) => {
+  return (
+    <div className="py-4 first:pt-0 last:pb-0">
+      <div
+        className={`flex items-center gap-3 py-2.5 px-5 rounded-xl ${isActive ? "bg-primary-200" : null
+          }`}
+      >
+        <img
+          className="w-12 h-12 object-cover rounded-full"
+          src="/profile.png"
+          alt="profile"
+        />
+        <div className="space-y-2 w-full">
+          <div className="flex items-center justify-between">
+            <p className="font-semibold text-sm text-secondary-100">
+              Angel Saris
+            </p>
+            <p className="font-base text-xs text-secondary-300">1m Ago</p>
           </div>
-        </div>
-
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="w-12 h-12 object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2 w-full">
-            <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm text-secondary-100">
-                Angel Saris
-              </p>
-              <p className="font-base text-xs text-secondary-300">1m Ago</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="font-base text-xs text-secondary-100">
-                Thank you very much...
-              </p>
-              <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="w-12 h-12 object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2 w-full">
-            <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm text-secondary-100">
-                Angel Saris
-              </p>
-              <p className="font-base text-xs text-secondary-300">1m Ago</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="font-base text-xs text-secondary-100">
-                Thank you very much...
-              </p>
-              <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="w-12 h-12 object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2 w-full">
-            <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm text-secondary-100">
-                Angel Saris
-              </p>
-              <p className="font-base text-xs text-secondary-300">1m Ago</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="font-base text-xs text-secondary-100">
-                Thank you very much...
-              </p>
-              <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="w-12 h-12 object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2 w-full">
-            <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm text-secondary-100">
-                Angel Saris
-              </p>
-              <p className="font-base text-xs text-secondary-300">1m Ago</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="font-base text-xs text-secondary-100">
-                Thank you very much...
-              </p>
-              <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3 pt-4">
-          <img
-            className="w-12 h-12 object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2 w-full">
-            <div className="flex items-center justify-between">
-              <p className="font-semibold text-sm text-secondary-100">
-                Angel Saris
-              </p>
-              <p className="font-base text-xs text-secondary-300">1m Ago</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p className="font-base text-xs text-secondary-100">
-                Thank you very much...
-              </p>
-              <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-            </div>
+          <div className="flex items-center justify-between">
+            <p className="font-base text-xs text-secondary-100">
+              Thank you very much...
+            </p>
+            <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
