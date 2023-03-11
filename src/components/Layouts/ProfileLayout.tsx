@@ -1,4 +1,5 @@
 import { FC, ReactElement, ReactNode } from "react";
+import { Head } from "../Atoms";
 import ProfileNavigation from "../Profile/ProfileNavigation";
 
 interface ProfileLayoutProps {
@@ -26,9 +27,12 @@ const ProfileLayout: FC<ProfileLayoutProps> = ({
           className={`${children ? null : "pb-8"
             } px-6 space-y-2 order-2 md:order-1 md:p-0`}
         >
-          <h1 className="text-secondary-100 font-semibold text-2xl">
-            {titleProfile}
-          </h1>
+          <Head
+            type="h1"
+            fontSize={"text-2xl"}
+            fontWeight="font-semibold"
+            value={titleProfile}
+          />
           {descProfile && (
             <p className="font-medium text-secondary-200">{descProfile}</p>
           )}

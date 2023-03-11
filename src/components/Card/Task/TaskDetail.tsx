@@ -1,3 +1,5 @@
+import { Head } from "../../Atoms";
+
 const TaskDetail = () => {
   return (
     <div className="bg-primary-300 p-8 flex flex-col gap-8 w-full md:w-5/12 lg:w-4/12">
@@ -26,9 +28,12 @@ const TaskDetail = () => {
             />
           </div>
           <div className="space-y-1">
-            <h3 className="font-semibold text-secondary-100">
-              Creating Awesome Mobile Apps
-            </h3>
+            <Head
+              type="h3"
+              fontSize="text-base"
+              fontWeight="font-semibold"
+              value="Creating Awesome Mobile Apps"
+            />
             <p className="text-xs font-medium text-secondary-200">
               UI/UX Designer
             </p>

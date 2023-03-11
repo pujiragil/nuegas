@@ -1,3 +1,5 @@
+import { Head } from "../../Atoms";
+
 const TaskSubmission = () => {
   return (
     <section className="w-full p-6 rounded-xl bg-primary-100 text-secondary-100 space-y-10 md:w-4/12">
@@ -5,14 +7,22 @@ const TaskSubmission = () => {
         <p className="text-sm font-semibold">Assigned Assignments</p>
 
         <div className="space-y-3">
-          <h2 className="text-xl font-semibold">
-            Creating Awesome Mobile Apps
-          </h2>
+          <Head
+            type="h2"
+            fontWeight="font-semibold"
+            fontSize={["text-xl", "md:text-2xl"]}
+            value="Creating Awesome Mobile Apps"
+          />
           <p className="text-secondary-300 text-sm font-medium">UI UX Design</p>
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Detail Student</h3>
+          <Head
+            type="h3"
+            fontWeight="font-semibold"
+            fontSize={["text-lg", "md:text-xl"]}
+            value="Detail Student"
+          />
           <div className="space-y-3 text-sm">
             <div className="flex items-center justify-between">
               <p className="font-medium text-secondary-300">Student Name</p>
@@ -30,7 +40,12 @@ const TaskSubmission = () => {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">File Task</h3>
+          <Head
+            type="h3"
+            fontWeight="font-semibold"
+            fontSize={["text-lg", "md:text-xl"]}
+            value="File Task"
+          />
           <div className="space-y-3 text-sm">
             <div className="flex items-center justify-between">
               <p className="text-secondary-300 font-medium">Last Modified</p>

@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Navigation } from "swiper";
+import { Head } from "../../Atoms";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -55,9 +56,12 @@ const TaskSlider: FC<TaskSliderProps> = ({
   return (
     <div className="space-y-[18px]">
       <div className="flex items-center justify-between">
-        <h2 className="font-semibold text-secondary-100 text-xl md:text-2xl">
-          {heading}
-        </h2>
+        <Head
+          type="h2"
+          fontSize={["text-xl", "md:text-2xl"]}
+          fontWeight="font-semibold"
+          value={heading}
+        />
         <div className="flex items-center gap-2.5">
           <SliderButton
             handleClick={handlePrev}

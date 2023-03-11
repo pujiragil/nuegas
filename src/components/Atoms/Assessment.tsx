@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Head from "./Head";
 
 interface AssessmentProps {
   assessments: string[];
@@ -7,7 +8,12 @@ interface AssessmentProps {
 const Assessment: FC<AssessmentProps> = ({ assessments }) => {
   return (
     <div className="space-y-4 px-4 text-secondary-100">
-      <h2 className="font-semibold text-xl">Essence Of Assessment</h2>
+      <Head
+        type="h2"
+        fontWeight="font-semibold"
+        fontSize={["text-xl", "md:text-2xl"]}
+        value="Essence of Assessment"
+      />
       <div className="space-y-5">
         {assessments.map((assessment, index) => (
           <div key={index} className="flex items-center gap-2.5">

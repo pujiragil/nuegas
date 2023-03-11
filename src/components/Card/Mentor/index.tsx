@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Head } from "../../Atoms";
 
 interface MentorProps {
   avatar: string;
@@ -29,7 +30,7 @@ const Mentor: FC<MentorProps> = ({
             alt="profile"
           />
           <div className="space-y-1">
-            <h3 className="font-semibold text-secondary-100">{name}</h3>
+            <Head type="h3" fontSize="text-base" fontWeight="font-semibold" value={name} />
             <p className="text-xs font-normal text-secondary-200">{jobTitle}</p>
           </div>
         </div>

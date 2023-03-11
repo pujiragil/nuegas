@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { mentorSliders, mentorLists } from "../../utils/mentor";
+import { Head } from "../../components/Atoms";
 import SearchFilter from "../../components/Field/SearchFilter";
 import ProfileLayout from "../../components/Layouts/ProfileLayout";
 import MentorSlider from "../../components/Slider/Mentor";
@@ -22,9 +23,12 @@ const Mentors = () => {
         />
         <div className="space-y-[18px]">
           <div className="flex items-center justify-between">
-            <h2 className="font-semibold text-secondary-100 text-xl md:text-2xl">
-              Mentors
-            </h2>
+            <Head
+              type="h2"
+              fontSize={["text-xl", "text-2xl"]}
+              fontWeight="font-semibold"
+              value="Mentors"
+            />
           </div>
           <div className="grid gap-8 lg:grid-cols-3">
             {mentorLists.map((slide, index) => (

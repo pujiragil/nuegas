@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import { Head } from "../../Atoms";
 
 interface TaskProps {
   thumbnail: string;
@@ -29,7 +30,12 @@ const Task: FC<TaskProps> = ({
       </Link>
       <div className="space-y-1">
         <Link to="/task/s">
-          <h4 className="font-semibold text-secondary-100">{title}</h4>
+          <Head
+            type="h3"
+            fontSize="text-base"
+            fontWeight="font-semibold"
+            value={title}
+          />
         </Link>
         <p className="text-xs font-medium text-secondary-200">{category}</p>
       </div>

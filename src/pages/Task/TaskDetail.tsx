@@ -4,6 +4,7 @@ import {
   Assessment,
   Description,
   Duration,
+  Head,
   Student,
   Thumbnail,
 } from "../../components/Atoms";
@@ -32,9 +33,12 @@ const TaskDetail = () => {
             <Thumbnail src="/task.png" />
 
             <div className="space-y-4 px-4">
-              <h1 className="font-semibold text-2xl text-secondary-100">
-                Creating Awesome Mobile Apps
-              </h1>
+              <Head
+                type="h1"
+                fontSize={["text-2xl", "md:text-3xl"]}
+                fontWeight="font-semibold"
+                value="Creating Awesome Mobile Apps"
+              />
               <div className="flex items-center text-xs font-medium">
                 <p className="pr-2.5 text-secondary-300 border-r border-[#DFDFDF]">
                   UI UX Design
