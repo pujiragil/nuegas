@@ -49,4 +49,4 @@ const messages: Messages = [
   },
 ];
 
-export { messages };
+export default messages;
