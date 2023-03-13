@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import {
   Mentors,
   Message,
+  MessageRoom,
   Overview,
   Root,
   Settings,
@@ -33,6 +34,16 @@ const router = createBrowserRouter([
       {
         path: "message",
         element: <Message />,
+        children: [
+          {
+            index: true,
+            element: <h1>Default Route Message Room</h1>,
+          },
+          {
+            path: "/message/:roomName",
+            element: <MessageRoom />,
+          },
+        ],
       },
       {
         path: "settings",
