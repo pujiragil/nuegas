@@ -81,6 +81,10 @@ const Settings = () => {
               </div>
             </div>
           </div>
+
+          <button className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 text-sm font-semibold">
+            Save Changes
+          </button>
         </div>
       </div>
     </>
