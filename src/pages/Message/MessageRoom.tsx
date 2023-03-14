@@ -7,34 +7,39 @@ const MessageRoom = () => {
   const message = messages.find((message) => message.link === roomName);
 
   return (
-    <div className="hidden md:block md:w-8/12">
-      <div className="bg-primary-100 py-6 px-12 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <img
-            className="w-[52px] h-[52px] object-cover rounded-full"
-            src="/profile.png"
-            alt="profile"
-          />
-          <div className="space-y-2">
-            <p className="font-semibold text-sm text-secondary-100">
-              {message?.user.name}
-            </p>
-            {message?.user.isOnline ? (
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#25C78B]"></span>
-                <p className="font-semibold text-xs text-secondary-100">
-                  Online
-                </p>
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
-                <p className="font-semibold text-xs text-secondary-100">
-                  Offline
-                </p>
-              </div>
-            )}
+    <div className="w-full md:w-8/12">
+      <div className="bg-primary-100 px-6 py-8 md:py-6 md:px-12 flex items-center justify-between">
+        <div className="flex items-center gap-4">
+          <img className="w-5 h-5 object-cover" src="/arrow-back.svg" alt="arrow-back" />
+
+          <div className="flex items-center gap-3">
+            <img
+              className="w-[52px] h-[52px] object-cover rounded-full"
+              src="/profile.png"
+              alt="profile"
+            />
+            <div className="space-y-2">
+              <p className="font-semibold text-sm text-secondary-100">
+                {message?.user.name}
+              </p>
+              {message?.user.isOnline ? (
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#25C78B]"></span>
+                  <p className="font-semibold text-xs text-secondary-100">
+                    Online
+                  </p>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#DB5962]"></span>
+                  <p className="font-semibold text-xs text-secondary-100">
+                    Offline
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
+
         </div>
 
         <div className="flex items-center gap-6">
