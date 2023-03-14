@@ -37,7 +37,9 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <h1>Default Route Message Room</h1>,
+            element: (
+              <h1 className="hidden md:block">Default Route Message Room</h1>
+            ),
           },
           {
             path: "/message/:roomName",

@@ -2,27 +2,38 @@ import ProfileLayout from "../../components/Layouts/ProfileLayout";
 import { NavLink, Outlet } from "react-router-dom";
 import { FC } from "react";
 import messages from "../../utils/message";
+import useMessage from "../../store/messageStore";
 
 const Message = () => {
+  const [isOpen, setIsOpen] = useMessage((state) => [
+    state.isOpen,
+    state.handleOpen,
+  ]);
+
   return (
     <>
-      <ProfileLayout titleProfile="Message" background="primary">
-        <div className="px-6 pb-6 md:hidden">
-          <div className="flex items-center gap-5 py-3.5 px-7 rounded-xl border border-primary-300 focus-within:ring-1 focus-within:ring-primary-300">
-            <input
-              className="border-none outline-none w-full text-xs font-base text-secondary-100"
-              placeholder="Search Name"
-            />
-            <img
-              className="w-5 h-5 object-cover"
-              src="/search.svg"
-              alt="search"
-            />
+      <div className={`${isOpen ? "hidden" : null} md:block`}>
+        <ProfileLayout titleProfile="Message" background="primary">
+          <div className="px-6 pb-6 md:hidden">
+            <div className="flex items-center gap-5 py-3.5 px-7 rounded-xl border border-primary-300 focus-within:ring-1 focus-within:ring-primary-300">
+              <input
+                className="border-none outline-none w-full text-xs font-base text-secondary-100"
+                placeholder="Search Name"
+              />
+              <img
+                className="w-5 h-5 object-cover"
+                src="/search.svg"
+                alt="search"
+              />
+            </div>
           </div>
-        </div>
-      </ProfileLayout>
-      <div className="flex">
-        <div className="p-6 bg-primary-100 w-full md:space-y-8 md:w-4/12">
+        </ProfileLayout>
+      </div>
+      <div className="flex relative overflow-hidden">
+        <div
+          className={`${isOpen ? "absolute inset-0 -translate-x-full" : ""
+            } p-6 bg-primary-100 w-full md:static md:block md:space-y-8 md:transform-none md:w-4/12`}
+        >
           <div className="hidden md:flex items-center gap-5 py-3.5 px-7 rounded-xl border border-primary-300 focus-within:ring-1 focus-within:ring-primary-300">
             <input
               className="border-none outline-none w-full text-xs font-base text-secondary-100"
@@ -38,6 +49,7 @@ const Message = () => {
           <div className="flex flex-col divide-y divide-primary-300">
             {messages.map((message) => (
               <ChatUserLink
+                onOpen={setIsOpen}
                 key={message.id}
                 link={message.link}
                 user={message.user}
@@ -59,11 +71,12 @@ interface ChatUserLinkProps {
     isOnline: boolean;
   };
   link: string;
+  onOpen: (isOpen: boolean) => void;
 }
 
-const ChatUserLink: FC<ChatUserLinkProps> = ({ user, link }) => {
+const ChatUserLink: FC<ChatUserLinkProps> = ({ user, link, onOpen }) => {
   return (
-    <div className="py-4 first:pt-0 last:pb-0">
+    <div onClick={() => onOpen(true)} className="py-4 first:pt-0 last:pb-0">
       <NavLink
         to={link}
         className={`flex items-center gap-3 py-2.5 px-5 rounded-xl ${user.isOnline ? "bg-primary-200" : null

@@ -5,7 +5,11 @@ interface PageProps {
 }
 
 const PageLayout = ({ children }: PageProps) => {
-  return <main className="w-full bg-primary-100 md:bg-primary-200">{children}</main>;
+  return (
+    <main className="w-full bg-primary-100 md:bg-primary-200">
+      {children}
+    </main>
+  );
 };
 
 export default PageLayout;
