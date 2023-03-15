@@ -1,8 +1,8 @@
 import { create, StateCreator } from "zustand";
 
 interface TabSlice {
-  selectedTab: string;
-  setSelectedTab: (tab: string) => void;
+  selectedTab: "general" | "notification";
+  setSelectedTab: (tab: TabSlice["selectedTab"]) => void;
 }
 
 const createTabSlice: StateCreator<TabSlice, [], [], TabSlice> = (set) => ({
