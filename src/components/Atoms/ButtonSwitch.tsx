@@ -10,7 +10,7 @@ const ButtonSwitch: FC<ButtonSwitchProps> = ({ isActive }): ReactElement => {
   return (
     <div
       onClick={() => setActive((prev) => !prev)}
-      className="w-[55px] h-[30px] rounded-full border border-primary-300 p-[5px]"
+      className="w-[55px] h-[30px] rounded-full border border-primary-300 p-[5px] cursor-pointer"
     >
       <span
         className={`${active
