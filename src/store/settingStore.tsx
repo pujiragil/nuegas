@@ -35,10 +35,10 @@ interface NotificationSlice {
   taskUpdate: boolean;
   taskDeadline: boolean;
   mentorHelp: boolean;
-  setMessage: (show: boolean) => void;
-  setTaskUpdate: (show: boolean) => void;
-  setTaskDeadline: (show: boolean) => void;
-  setMentorHelp: (show: boolean) => void;
+  setMessage: () => void;
+  setTaskUpdate: () => void;
+  setTaskDeadline: () => void;
+  setMentorHelp: () => void;
 }
 
 const createNotificationSlice: StateCreator<
@@ -51,10 +51,11 @@ const createNotificationSlice: StateCreator<
   taskUpdate: false,
   taskDeadline: true,
   mentorHelp: false,
-  setMessage: (message) => set({ message }),
-  setTaskUpdate: (taskUpdate) => set({ taskUpdate }),
-  setTaskDeadline: (taskDeadline) => set({ taskDeadline }),
-  setMentorHelp: (mentorHelp) => set({ mentorHelp }),
+  setMessage: () => set((state) => ({ message: !state.message })),
+  setTaskUpdate: () => set((state) => ({ taskUpdate: !state.taskUpdate })),
+  setTaskDeadline: () =>
+    set((state) => ({ taskDeadline: !state.taskDeadline })),
+  setMentorHelp: () => set((state) => ({ mentorHelp: !state.mentorHelp })),
 });
 
 const useSettingStore = create<TabSlice & GeneralSlice & NotificationSlice>()(
