@@ -2,11 +2,15 @@ import ProfileLayout from "../../components/Layouts/ProfileLayout";
 import SwitchTab from "../../components/Switch";
 import dropdown from "../../assets/arrow.svg";
 import { useState } from "react";
+import ButtonSwitch from "../../components/Atoms/ButtonSwitch";
+import useSettingStore from "../../store/settingStore";
 
 const timezoneWrapperStyle: string =
   "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4";
 
 const Settings = () => {
+  const selectedTab = useSettingStore((state) => state.selectedTab);
+
   return (
     <>
       <ProfileLayout
@@ -16,7 +20,7 @@ const Settings = () => {
       />
 
       <div className="bg-primary-200 text-secondary-100 p-6">
-        <GeneralTab />
+        {selectedTab === "general" ? <GeneralTab /> : <NotificationTab />}
       </div>
     </>
   );
@@ -91,6 +95,35 @@ const GeneralTab = () => {
       </div>
 
       <button className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 text-sm font-semibold">
+        Save Changes
+      </button>
+    </div>
+  );
+};
+
+const NotificationTab = () => {
+  return (
+    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-36">
+      <div className="flex flex-col gap-6 font-semibold text-sm text-secondary-100">
+        <div className="flex items-center gap-5">
+          <ButtonSwitch isActive={true} />
+          <p>Message</p>
+        </div>
+        <div className="flex items-center gap-5">
+          <ButtonSwitch isActive={false} />
+          <p>Task Update</p>
+        </div>
+        <div className="flex items-center gap-5">
+          <ButtonSwitch isActive={true} />
+          <p>Task Deadline</p>
+        </div>
+        <div className="flex items-center gap-5">
+          <ButtonSwitch isActive={false} />
+          <p>Mentor Help</p>
+        </div>
+      </div>
+
+      <button className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 font-semibold text-sm">
         Save Changes
       </button>
     </div>
