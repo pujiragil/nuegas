@@ -3,12 +3,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import { FC } from "react";
 import messages from "../../utils/message";
 import useMessage from "../../store/messageStore";
+import { shallow } from "zustand/shallow";
 
 const Message = () => {
-  const [isOpen, setIsOpen] = useMessage((state) => [
-    state.isOpen,
-    state.handleOpen,
-  ]);
+  const [isOpen, setIsOpen] = useMessage(
+    (state) => [state.isOpen, state.handleOpen],
+    shallow
+  );
 
   return (
     <>

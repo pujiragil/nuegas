@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { shallow } from "zustand/shallow";
 import useMessage from "../../store/messageStore";
 import messages from "../../utils/message";
 
@@ -7,10 +8,10 @@ const iconWrapperStyle: string =
 const iconStyle: string = "w-5 h-5 object-cover md:w-6 md:h-6";
 
 const MessageRoom = () => {
-  const [isOpen, setIsOpen] = useMessage((state) => [
-    state.isOpen,
-    state.handleOpen,
-  ]);
+  const [isOpen, setIsOpen] = useMessage(
+    (state) => [state.isOpen, state.handleOpen],
+    shallow
+  );
   const { roomName } = useParams();
 
   const message = messages.find((message) => message.link === roomName);
