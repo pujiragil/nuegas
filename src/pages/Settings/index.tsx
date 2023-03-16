@@ -62,15 +62,15 @@ const GeneralTab = () => {
             <div
               onClick={() => setTimeZone("24 hour")}
               className={`${timeZone === "24 hour"
-                ? "border-tertiary-100"
-                : "border-primary-300"
+                  ? "border-tertiary-100"
+                  : "border-primary-300"
                 } ${timezoneWrapperStyle}`}
             >
               <p className="font-medium text-xs">24 Hours</p>
               <span
                 className={`${timeZone === "24 hour"
-                  ? "border-4 border-tertiary-100"
-                  : "border-2 border-primary-300"
+                    ? "border-4 border-tertiary-100"
+                    : "border-2 border-primary-300"
                   } w-5 h-5 rounded-full`}
               ></span>
             </div>
@@ -78,15 +78,15 @@ const GeneralTab = () => {
             <div
               onClick={() => setTimeZone("12 hour")}
               className={`${timeZone === "12 hour"
-                ? "border-tertiary-100"
-                : "border-primary-300"
+                  ? "border-tertiary-100"
+                  : "border-primary-300"
                 } ${timezoneWrapperStyle}`}
             >
               <p className="font-medium text-xs">12 Hours</p>
               <span
                 className={`${timeZone === "12 hour"
-                  ? "border-4 border-tertiary-100"
-                  : "border-2 border-primary-300"
+                    ? "border-4 border-tertiary-100"
+                    : "border-2 border-primary-300"
                   } w-5 h-5 rounded-full`}
               ></span>
             </div>
@@ -119,9 +119,9 @@ const NotificationTab = (): JSX.Element => {
   // Membuat fungsi handleNotification menggunakan useCallback untuk memperbaiki performa
   const handleNotification = useCallback(
     (name: keyof Notification) => {
-      setNotification(prevNotification => ({
+      setNotification((prevNotification) => ({
         ...prevNotification,
-        [name]: !prevNotification[name]
+        [name]: !prevNotification[name],
       }));
     },
     [setNotification]
@@ -133,22 +133,22 @@ const NotificationTab = (): JSX.Element => {
         {/* Menggunakan fungsi handleNotification yang telah dibuat */}
         <SwitchNotification
           isActive={notification.message}
-          setIsActive={() => handleNotification('message')}
+          setIsActive={() => handleNotification("message")}
           label="Message"
         />
         <SwitchNotification
           isActive={notification.taskUpdate}
-          setIsActive={() => handleNotification('taskUpdate')}
+          setIsActive={() => handleNotification("taskUpdate")}
           label="Task Update"
         />
         <SwitchNotification
           isActive={notification.taskDeadline}
-          setIsActive={() => handleNotification('taskDeadline')}
+          setIsActive={() => handleNotification("taskDeadline")}
           label="Task Deadline"
         />
         <SwitchNotification
           isActive={notification.mentorHelp}
-          setIsActive={() => handleNotification('mentorHelp')}
+          setIsActive={() => handleNotification("mentorHelp")}
           label="Mentor Help"
         />
       </div>
@@ -171,7 +171,10 @@ const SwitchNotification = ({
   label,
 }: SwitchNotificationProps): JSX.Element => {
   return (
-    <div onClick={setIsActive} className="flex items-center gap-5">
+    <div
+      onClick={setIsActive}
+      className="flex items-center gap-5 w-fit cursor-pointer"
+    >
       <ButtonSwitch isActive={isActive} />
       <p>{label}</p>
     </div>
