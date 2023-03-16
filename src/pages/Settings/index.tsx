@@ -1,7 +1,7 @@
 import ProfileLayout from "../../components/Layouts/ProfileLayout";
 import SwitchTab from "../../components/Switch";
 import dropdown from "../../assets/arrow.svg";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import ButtonSwitch from "../../components/Atoms/ButtonSwitch";
 import useSettingStore from "../../store/settingStore";
 
@@ -62,15 +62,15 @@ const GeneralTab = () => {
             <div
               onClick={() => setTimeZone("24 hour")}
               className={`${timeZone === "24 hour"
-                  ? "border-tertiary-100"
-                  : "border-primary-300"
+                ? "border-tertiary-100"
+                : "border-primary-300"
                 } ${timezoneWrapperStyle}`}
             >
               <p className="font-medium text-xs">24 Hours</p>
               <span
                 className={`${timeZone === "24 hour"
-                    ? "border-4 border-tertiary-100"
-                    : "border-2 border-primary-300"
+                  ? "border-4 border-tertiary-100"
+                  : "border-2 border-primary-300"
                   } w-5 h-5 rounded-full`}
               ></span>
             </div>
@@ -78,15 +78,15 @@ const GeneralTab = () => {
             <div
               onClick={() => setTimeZone("12 hour")}
               className={`${timeZone === "12 hour"
-                  ? "border-tertiary-100"
-                  : "border-primary-300"
+                ? "border-tertiary-100"
+                : "border-primary-300"
                 } ${timezoneWrapperStyle}`}
             >
               <p className="font-medium text-xs">12 Hours</p>
               <span
                 className={`${timeZone === "12 hour"
-                    ? "border-4 border-tertiary-100"
-                    : "border-2 border-primary-300"
+                  ? "border-4 border-tertiary-100"
+                  : "border-2 border-primary-300"
                   } w-5 h-5 rounded-full`}
               ></span>
             </div>
@@ -101,31 +101,79 @@ const GeneralTab = () => {
   );
 };
 
-const NotificationTab = () => {
-  return (
-    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-36">
-      <div className="flex flex-col gap-6 font-semibold text-sm text-secondary-100">
-        <div className="flex items-center gap-5">
-          <ButtonSwitch isActive={true} />
-          <p>Message</p>
-        </div>
-        <div className="flex items-center gap-5">
-          <ButtonSwitch isActive={false} />
-          <p>Task Update</p>
-        </div>
-        <div className="flex items-center gap-5">
-          <ButtonSwitch isActive={true} />
-          <p>Task Deadline</p>
-        </div>
-        <div className="flex items-center gap-5">
-          <ButtonSwitch isActive={false} />
-          <p>Mentor Help</p>
-        </div>
-      </div>
+interface Notification {
+  message: boolean;
+  taskUpdate: boolean;
+  taskDeadline: boolean;
+  mentorHelp: boolean;
+}
 
+const NotificationTab = (): JSX.Element => {
+  const [notification, setNotification] = useState<Notification>({
+    message: true,
+    taskUpdate: false,
+    taskDeadline: false,
+    mentorHelp: true,
+  });
+
+  // Membuat fungsi handleNotification menggunakan useCallback untuk memperbaiki performa
+  const handleNotification = useCallback(
+    (name: keyof Notification) => {
+      setNotification(prevNotification => ({
+        ...prevNotification,
+        [name]: !prevNotification[name]
+      }));
+    },
+    [setNotification]
+  );
+
+  return (
+    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-6">
+      <div className="flex flex-col gap-6 font-semibold text-sm text-secondary-100">
+        {/* Menggunakan fungsi handleNotification yang telah dibuat */}
+        <SwitchNotification
+          isActive={notification.message}
+          setIsActive={() => handleNotification('message')}
+          label="Message"
+        />
+        <SwitchNotification
+          isActive={notification.taskUpdate}
+          setIsActive={() => handleNotification('taskUpdate')}
+          label="Task Update"
+        />
+        <SwitchNotification
+          isActive={notification.taskDeadline}
+          setIsActive={() => handleNotification('taskDeadline')}
+          label="Task Deadline"
+        />
+        <SwitchNotification
+          isActive={notification.mentorHelp}
+          setIsActive={() => handleNotification('mentorHelp')}
+          label="Mentor Help"
+        />
+      </div>
       <button className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 font-semibold text-sm">
         Save Changes
       </button>
+    </div>
+  );
+};
+
+interface SwitchNotificationProps {
+  isActive: boolean;
+  setIsActive: () => void;
+  label: string;
+}
+
+const SwitchNotification = ({
+  isActive,
+  setIsActive,
+  label,
+}: SwitchNotificationProps): JSX.Element => {
+  return (
+    <div onClick={setIsActive} className="flex items-center gap-5">
+      <ButtonSwitch isActive={isActive} />
+      <p>{label}</p>
     </div>
   );
 };
