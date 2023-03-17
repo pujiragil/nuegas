@@ -10,7 +10,7 @@ const createTabSlice: StateCreator<TabSlice, [], [], TabSlice> = (set) => ({
   setSelectedTab: (tab) => set({ selectedTab: tab }),
 });
 
-interface GeneralSlice {
+export interface GeneralSlice {
   general: {
     language: string;
     timeZone: string;
@@ -33,7 +33,7 @@ const createGeneralSlice: StateCreator<GeneralSlice, [], [], GeneralSlice> = (
     })),
 });
 
-interface NotificationSlice {
+export interface NotificationSlice {
   notification: {
     message: boolean;
     taskUpdate: boolean;
