@@ -53,7 +53,9 @@ const createNotificationSlice: StateCreator<
     mentorHelp: false,
   },
   setNotification: (notification) =>
-    set((state) => ({ notification: { ...state.notification, notification } })),
+    set((state) => ({
+      notification: { ...state.notification, ...notification },
+    })),
 });
 
 const useSettingStore = create<TabSlice & GeneralSlice & NotificationSlice>()(
