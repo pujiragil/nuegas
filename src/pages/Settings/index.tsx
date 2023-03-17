@@ -6,7 +6,7 @@ import useSettingStore from "../../store/settingStore";
 import { shallow } from "zustand/shallow";
 
 const timezoneWrapperStyle: string =
-  "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4";
+  "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4 md:w-full md:gap-0 md:justify-between";
 
 const Settings = () => {
   const selectedTab = useSettingStore((state) => state.selectedTab);
@@ -30,8 +30,8 @@ const GeneralTab = () => {
   const [timeZone, setTimeZone] = useState<"12 hour" | "24 hour">("24 hour");
 
   return (
-    <div className="bg-primary-100 rounded-xl p-5 flex flex-col gap-36">
-      <div className="flex flex-col gap-6">
+    <div className="bg-primary-100 rounded-xl p-5 flex flex-col gap-36 md:gap-16">
+      <div className="flex flex-col gap-6 md:w-2/6">
         <div className="flex flex-col gap-4">
           <p className="font-semibold text-sm">Language</p>
           <div className="font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300">
@@ -58,7 +58,7 @@ const GeneralTab = () => {
 
         <div className="flex flex-col gap-4">
           <p className="font-semibold text-sm">Timezone</p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 md:gap-8">
             <div
               onClick={() => setTimeZone("24 hour")}
               className={`${timeZone === "24 hour"
@@ -94,7 +94,7 @@ const GeneralTab = () => {
         </div>
       </div>
 
-      <button className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 text-sm font-semibold">
+      <button className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 text-sm font-semibold md:w-2/6">
         Save Changes
       </button>
     </div>
@@ -132,8 +132,8 @@ const NotificationTab = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-36">
-      <div className="flex flex-col gap-6 font-semibold text-sm text-secondary-100">
+    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-36 md:gap-16">
+      <div className="flex flex-col gap-6 font-semibold text-sm text-secondary-100 md:w-2/6">
         <SwitchNotification
           isActive={notification.message}
           setIsActive={() => handleNotification("message")}
@@ -157,7 +157,7 @@ const NotificationTab = (): JSX.Element => {
       </div>
       <button
         onClick={handleSavedChanges}
-        className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 font-semibold text-sm"
+        className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 font-semibold text-sm md:w-2/6"
       >
         Save Changes
       </button>
