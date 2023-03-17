@@ -16,10 +16,11 @@ const Settings = () => {
       <ProfileLayout
         titleProfile="Settings"
         background="primary"
-        children={<SwitchTab />}
+        children={<SwitchTab screenDisplay="md:hidden" />}
       />
 
       <div className="bg-primary-200 text-secondary-100 p-6">
+        <SwitchTab screenDisplay="hidden bg-primary-100 md:p-8 md:pb-0 md:rounded-t-xl md:flex" />
         {selectedTab === "general" ? <GeneralTab /> : <NotificationTab />}
       </div>
     </>
@@ -30,7 +31,7 @@ const GeneralTab = () => {
   const [timeZone, setTimeZone] = useState<"12 hour" | "24 hour">("24 hour");
 
   return (
-    <div className="bg-primary-100 rounded-xl p-5 flex flex-col gap-36 md:gap-16">
+    <div className="bg-primary-100 rounded-xl p-5 flex flex-col gap-36 md:p-8 md:gap-16">
       <div className="flex flex-col gap-6 md:w-2/6">
         <div className="flex flex-col gap-4">
           <p className="font-semibold text-sm">Language</p>
@@ -132,7 +133,7 @@ const NotificationTab = (): JSX.Element => {
   };
 
   return (
-    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-36 md:gap-16">
+    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-36 md:p-8 md:gap-16">
       <div className="flex flex-col gap-6 font-semibold text-sm text-secondary-100 md:w-2/6">
         <SwitchNotification
           isActive={notification.message}

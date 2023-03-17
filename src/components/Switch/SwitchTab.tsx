@@ -6,14 +6,14 @@ const activeTab: string =
 const inactiveTab: string =
   "text-secondary-300 p-3 cursor-pointer hover:text-secondary-200 transition-all duration-200 ease-in-out";
 
-const SwitchTab = () => {
+const SwitchTab = ({ screenDisplay }: { screenDisplay: string }) => {
   const [selectedTab, setSelectedTab] = useSettingStore(
     (state) => [state.selectedTab, state.setSelectedTab],
     shallow
   );
 
   return (
-    <div className="flex px-6 gap-7 text-sm font-base">
+    <div className={`flex px-6 gap-7 text-sm font-base ${screenDisplay}`}>
       <p
         onClick={() => setSelectedTab("general")}
         className={selectedTab === "general" ? activeTab : inactiveTab}
