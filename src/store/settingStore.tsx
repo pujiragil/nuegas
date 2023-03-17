@@ -11,23 +11,26 @@ const createTabSlice: StateCreator<TabSlice, [], [], TabSlice> = (set) => ({
 });
 
 interface GeneralSlice {
-  language: string;
-  timezone: string;
-  timezoneType: number;
-  setLanguage: (language: string) => void;
-  setTimezone: (timezone: string) => void;
-  setTimezoneType: (timezoneType: number) => void;
+  general: {
+    language: string;
+    timeZone: string;
+    timeZoneType: "24 hour" | "12 hour";
+  };
+  setGeneral: (general: GeneralSlice["general"]) => void;
 }
 
 const createGeneralSlice: StateCreator<GeneralSlice, [], [], GeneralSlice> = (
   set
 ) => ({
-  language: "English",
-  timezone: "English",
-  timezoneType: 24,
-  setLanguage: (language) => set({ language }),
-  setTimezone: (timezone) => set({ timezone }),
-  setTimezoneType: (timezoneType) => set({ timezoneType }),
+  general: {
+    language: "English",
+    timeZone: "English",
+    timeZoneType: "24 hour",
+  },
+  setGeneral: (general) =>
+    set((state) => ({
+      general: { ...state.general, ...general },
+    })),
 });
 
 interface NotificationSlice {
