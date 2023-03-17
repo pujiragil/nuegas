@@ -1,8 +1,7 @@
 import ProfileLayout from "../../components/Layouts/ProfileLayout";
-import SwitchTab from "../../components/Switch";
+import { SwitchTab, SwitchNotification } from "../../components/Switch";
 import dropdown from "../../assets/arrow.svg";
 import { useCallback, useState } from "react";
-import ButtonSwitch from "../../components/Atoms/ButtonSwitch";
 import useSettingStore from "../../store/settingStore";
 import { shallow } from "zustand/shallow";
 
@@ -162,28 +161,6 @@ const NotificationTab = (): JSX.Element => {
       >
         Save Changes
       </button>
-    </div>
-  );
-};
-
-interface SwitchNotificationProps {
-  isActive: boolean;
-  setIsActive: () => void;
-  label: string;
-}
-
-const SwitchNotification = ({
-  isActive,
-  setIsActive,
-  label,
-}: SwitchNotificationProps): JSX.Element => {
-  return (
-    <div
-      onClick={setIsActive}
-      className="flex items-center gap-5 w-fit cursor-pointer"
-    >
-      <ButtonSwitch isActive={isActive} />
-      <p>{label}</p>
     </div>
   );
 };
