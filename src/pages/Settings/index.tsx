@@ -4,6 +4,7 @@ import dropdown from "../../assets/arrow.svg";
 import { useCallback, useState } from "react";
 import ButtonSwitch from "../../components/Atoms/ButtonSwitch";
 import useSettingStore from "../../store/settingStore";
+import { shallow } from "zustand/shallow";
 
 const timezoneWrapperStyle: string =
   "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4";
@@ -109,14 +110,13 @@ interface Notification {
 }
 
 const NotificationTab = (): JSX.Element => {
-  const [notification, setNotification] = useState<Notification>({
-    message: true,
-    taskUpdate: false,
-    taskDeadline: false,
-    mentorHelp: true,
-  });
+  const [notificationStore, setNotificationStore] = useSettingStore(
+    (state) => [state.notification, state.setNotification],
+    shallow
+  );
+  const [notification, setNotification] =
+    useState<Notification>(notificationStore);
 
-  // Membuat fungsi handleNotification menggunakan useCallback untuk memperbaiki performa
   const handleNotification = useCallback(
     (name: keyof Notification) => {
       setNotification((prevNotification) => ({
@@ -127,10 +127,14 @@ const NotificationTab = (): JSX.Element => {
     [setNotification]
   );
 
+  const handleSavedChanges = (): void => {
+    setNotificationStore(notification);
+    alert("Saved Changes");
+  };
+
   return (
-    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-6">
+    <div className="bg-primary-100 p-5 rounded-xl flex flex-col gap-36">
       <div className="flex flex-col gap-6 font-semibold text-sm text-secondary-100">
-        {/* Menggunakan fungsi handleNotification yang telah dibuat */}
         <SwitchNotification
           isActive={notification.message}
           setIsActive={() => handleNotification("message")}
@@ -152,7 +156,10 @@ const NotificationTab = (): JSX.Element => {
           label="Mentor Help"
         />
       </div>
-      <button className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 font-semibold text-sm">
+      <button
+        onClick={handleSavedChanges}
+        className="w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 font-semibold text-sm"
+      >
         Save Changes
       </button>
     </div>
