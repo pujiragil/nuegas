@@ -1,11 +1,12 @@
 import { FC } from "react";
+import { Language } from "../../store/settingStore";
 
 const listStyle: string =
   "px-5 py-4 cursor-pointer hover:bg-primary-300 transition-all duration-300 ease-in-out";
 
 interface SelectDropdownProps {
-  lists: string[];
-  onSelect: (language: string) => void;
+  lists: Language[];
+  onSelect: (language: "English" | "Indonesian" | "Javanese") => void;
 }
 
 const SelectDropdown: FC<SelectDropdownProps> = ({ lists, onSelect }) => {
