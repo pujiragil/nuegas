@@ -4,6 +4,7 @@ import dropdown from "../../assets/arrow.svg";
 import { useCallback, useState } from "react";
 import useSettingStore from "../../store/settingStore";
 import { shallow } from "zustand/shallow";
+import { SelectDropdown } from "../../components/Field";
 
 const timezoneWrapperStyle: string =
   "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4 md:w-full md:gap-0 md:justify-between";
@@ -31,13 +32,17 @@ const Settings = () => {
 
 const GeneralTab = () => {
   const [timeZone, setTimeZone] = useState<"12 hour" | "24 hour">("24 hour");
+  const [isSelect, setIsSelect] = useState<boolean>(false);
 
   return (
     <div className="flex flex-col gap-36 md:gap-16">
       <div className="flex flex-col gap-6 md:w-2/6">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 relative">
           <p className="font-semibold text-sm">Language</p>
-          <div className="font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300">
+          <div
+            onClick={() => setIsSelect((prevSelect) => !prevSelect)}
+            className="cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300"
+          >
             <p>English (Default)</p>
             <img
               className="w-5 h-5 object-cover"
@@ -45,6 +50,8 @@ const GeneralTab = () => {
               alt="dropdown"
             />
           </div>
+
+          {isSelect && <SelectDropdown />}
         </div>
 
         <div className="flex flex-col gap-4">
