@@ -30,9 +30,11 @@ const Settings = () => {
   );
 };
 
+type Select = "language" | "timezone" | "";
+
 const GeneralTab = () => {
   const [timeZone, setTimeZone] = useState<"12 hour" | "24 hour">("24 hour");
-  const [isSelect, setIsSelect] = useState<boolean>(false);
+  const [isSelect, setIsSelect] = useState<Select>("");
 
   return (
     <div className="flex flex-col gap-36 md:gap-16">
@@ -40,7 +42,11 @@ const GeneralTab = () => {
         <div className="flex flex-col gap-4 relative">
           <p className="font-semibold text-sm">Language</p>
           <div
-            onClick={() => setIsSelect((prevSelect) => !prevSelect)}
+            onClick={() =>
+              setIsSelect((prevSelect) =>
+                prevSelect === "" || prevSelect === "timezone" ? "language" : ""
+              )
+            }
             className="cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300"
           >
             <p>English (Default)</p>
@@ -51,12 +57,19 @@ const GeneralTab = () => {
             />
           </div>
 
-          {isSelect && <SelectDropdown />}
+          {isSelect === "language" && <SelectDropdown />}
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 relative">
           <p className="font-semibold text-sm">Timezone</p>
-          <div className="font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300">
+          <div
+            onClick={() =>
+              setIsSelect((prevSelect) =>
+                prevSelect === "" || prevSelect === "language" ? "timezone" : ""
+              )
+            }
+            className="cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300"
+          >
             <p>English (Default)</p>
             <img
               className="w-5 h-5 object-cover"
@@ -64,6 +77,7 @@ const GeneralTab = () => {
               alt="dropdown"
             />
           </div>
+          {isSelect === "timezone" && <SelectDropdown />}
         </div>
 
         <div className="flex flex-col gap-4">
