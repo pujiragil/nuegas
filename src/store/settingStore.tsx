@@ -10,10 +10,13 @@ const createTabSlice: StateCreator<TabSlice, [], [], TabSlice> = (set) => ({
   setSelectedTab: (tab) => set({ selectedTab: tab }),
 });
 
+type Language = "English" | "Indonesian" | "Javanese";
+type TimeZone = Language;
+
 export interface GeneralSlice {
   general: {
-    language: string;
-    timeZone: string;
+    language: Language;
+    timeZone: TimeZone;
     timeZoneType: "24 hour" | "12 hour";
   };
   setGeneral: (general: GeneralSlice["general"]) => void;
