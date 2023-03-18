@@ -7,7 +7,7 @@ import { shallow } from "zustand/shallow";
 import { SelectDropdown } from "../../components/Field";
 
 const timezoneWrapperStyle: string =
-  "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4 md:w-full md:gap-0 md:justify-between";
+  "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4 md:w-full md:gap-0 md:justify-between transition-all duration-300 ease-in-out";
 
 const Settings = () => {
   const selectedTab = useSettingStore((state) => state.selectedTab);
@@ -30,11 +30,28 @@ const Settings = () => {
   );
 };
 
-type Select = "language" | "timezone" | "";
+type Select = "language" | "timezone" | "default";
+
+const languages: string[] = ["English", "Indonesian", "Javanese"];
+const timeZones: string[] = languages;
 
 const GeneralTab = () => {
-  const [timeZone, setTimeZone] = useState<"12 hour" | "24 hour">("24 hour");
-  const [isSelect, setIsSelect] = useState<Select>("");
+  const [timeZoneType, setTimeZoneType] = useState<"12 hour" | "24 hour">(
+    "24 hour"
+  );
+  const [isSelect, setIsSelect] = useState<Select>("default");
+  const [language, setLanguage] = useState<string>("English");
+  const [timeZone, setTimeZone] = useState<string>("English");
+
+  const handleLanguage = (language: string) => {
+    setLanguage(language);
+    setIsSelect("default");
+  };
+
+  const handleTimeZone = (timeZone: string) => {
+    setTimeZone(timeZone);
+    setIsSelect("default");
+  };
 
   return (
     <div className="flex flex-col gap-36 md:gap-16">
@@ -44,20 +61,25 @@ const GeneralTab = () => {
           <div
             onClick={() =>
               setIsSelect((prevSelect) =>
-                prevSelect === "" || prevSelect === "timezone" ? "language" : ""
+                prevSelect === "default" || prevSelect === "timezone"
+                  ? "language"
+                  : "default"
               )
             }
-            className="cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300"
+            className="cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300 hover:bg-primary-300 transition-all duration-300 ease-in-out"
           >
-            <p>English (Default)</p>
+            <p>{language}</p>
             <img
-              className="w-5 h-5 object-cover"
+              className={`${isSelect === "language" ? "rotate-180" : "rotate-0"
+                } transition-all duration-300 ease-in-out w-5 h-5 object-cover`}
               src={dropdown}
               alt="dropdown"
             />
           </div>
 
-          {isSelect === "language" && <SelectDropdown />}
+          {isSelect === "language" && (
+            <SelectDropdown lists={languages} onSelect={handleLanguage} />
+          )}
         </div>
 
         <div className="flex flex-col gap-4 relative">
@@ -65,53 +87,58 @@ const GeneralTab = () => {
           <div
             onClick={() =>
               setIsSelect((prevSelect) =>
-                prevSelect === "" || prevSelect === "language" ? "timezone" : ""
+                prevSelect === "default" || prevSelect === "language"
+                  ? "timezone"
+                  : "default"
               )
             }
             className="cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300"
           >
-            <p>English (Default)</p>
+            <p>{timeZone}</p>
             <img
-              className="w-5 h-5 object-cover"
+              className={`${isSelect === "timezone" ? "rotate-180" : "rotate-0"
+                } transition-all duration-300 ease-in-out w-5 h-5 object-cover`}
               src={dropdown}
               alt="dropdown"
             />
           </div>
-          {isSelect === "timezone" && <SelectDropdown />}
+          {isSelect === "timezone" && (
+            <SelectDropdown lists={timeZones} onSelect={handleTimeZone} />
+          )}
         </div>
 
         <div className="flex flex-col gap-4">
           <p className="font-semibold text-sm">Timezone</p>
           <div className="flex items-center gap-4 md:gap-8">
             <div
-              onClick={() => setTimeZone("24 hour")}
-              className={`${timeZone === "24 hour"
+              onClick={() => setTimeZoneType("24 hour")}
+              className={`${timeZoneType === "24 hour"
                   ? "border-tertiary-100"
                   : "border-primary-300"
                 } ${timezoneWrapperStyle}`}
             >
               <p className="font-medium text-xs">24 Hours</p>
               <span
-                className={`${timeZone === "24 hour"
+                className={`${timeZoneType === "24 hour"
                     ? "border-4 border-tertiary-100"
                     : "border-2 border-primary-300"
-                  } w-5 h-5 rounded-full`}
+                  } w-5 h-5 rounded-full transition-all duration-300 ease-in`}
               ></span>
             </div>
 
             <div
-              onClick={() => setTimeZone("12 hour")}
-              className={`${timeZone === "12 hour"
+              onClick={() => setTimeZoneType("12 hour")}
+              className={`${timeZoneType === "12 hour"
                   ? "border-tertiary-100"
                   : "border-primary-300"
                 } ${timezoneWrapperStyle}`}
             >
               <p className="font-medium text-xs">12 Hours</p>
               <span
-                className={`${timeZone === "12 hour"
+                className={`${timeZoneType === "12 hour"
                     ? "border-4 border-tertiary-100"
                     : "border-2 border-primary-300"
-                  } w-5 h-5 rounded-full`}
+                  } w-5 h-5 rounded-full transition-all duration-300 ease-in`}
               ></span>
             </div>
           </div>
