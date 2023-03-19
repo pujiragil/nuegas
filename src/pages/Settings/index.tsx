@@ -64,6 +64,11 @@ const GeneralTab = () => {
     setIsSelect("default");
   };
 
+  const handleSavedChanges = () => {
+    setGeneralStore(general);
+    alert("Saved Changes");
+  };
+
   return (
     <div className="flex flex-col gap-36 md:gap-16">
       <div className="flex flex-col gap-6 md:w-2/6">
@@ -166,7 +171,9 @@ const GeneralTab = () => {
         </div>
       </div>
 
-      <button className={buttonStyle}>Save Changes</button>
+      <button onClick={handleSavedChanges} className={buttonStyle}>
+        Save Changes
+      </button>
     </div>
   );
 };
