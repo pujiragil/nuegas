@@ -11,15 +11,6 @@ import useSettingStore, {
 import { shallow } from "zustand/shallow";
 import { SelectDropdown } from "../../components/Field";
 
-const timezoneWrapperStyle: string =
-  "cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4 md:w-full md:gap-0 md:justify-between transition-all duration-300 ease-in-out";
-const dropdownStyle: string =
-  "cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300 hover:bg-primary-300 transition-all duration-300 ease-in-out";
-const dropdownArrowStyle: string =
-  "transition-all duration-200 ease-in w-5 h-5 object-cover";
-const buttonStyle: string =
-  "w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 text-sm font-semibold md:w-2/6";
-
 const Settings = () => {
   const selectedTab = useSettingStore((state) => state.selectedTab);
 
@@ -82,12 +73,12 @@ const GeneralTab = () => {
                   : "default"
               )
             }
-            className={dropdownStyle}
+            className="dropdown"
           >
             <p>{general.language}</p>
             <img
               className={`${isSelect === "language" ? "rotate-180" : "rotate-0"
-                } ${dropdownArrowStyle}`}
+                } dropdown-arrow`}
               src={dropdown}
               alt="dropdown"
             />
@@ -108,12 +99,12 @@ const GeneralTab = () => {
                   : "default"
               )
             }
-            className={dropdownStyle}
+            className="dropdown"
           >
             <p>{general.timeZone}</p>
             <img
               className={`${isSelect === "timezone" ? "rotate-180" : "rotate-0"
-                } ${dropdownArrowStyle}`}
+                } dropdown-arrow`}
               src={dropdown}
               alt="dropdown"
             />
@@ -136,14 +127,14 @@ const GeneralTab = () => {
               className={`${general.timeZoneType === "24 hour"
                   ? "border-tertiary-100"
                   : "border-primary-300"
-                } ${timezoneWrapperStyle}`}
+                } timezone-switch-button`}
             >
               <p className="font-medium text-xs">24 Hours</p>
               <span
                 className={`${general.timeZoneType === "24 hour"
                     ? "border-4 border-tertiary-100"
                     : "border-2 border-primary-300"
-                  } w-5 h-5 rounded-full transition-all duration-200 ease-in`}
+                  } timezone-switch-circle`}
               ></span>
             </div>
 
@@ -157,21 +148,21 @@ const GeneralTab = () => {
               className={`${general.timeZoneType === "12 hour"
                   ? "border-tertiary-100"
                   : "border-primary-300"
-                } ${timezoneWrapperStyle}`}
+                } timezone-switch-button`}
             >
               <p className="font-medium text-xs">12 Hours</p>
               <span
                 className={`${general.timeZoneType === "12 hour"
                     ? "border-4 border-tertiary-100"
                     : "border-2 border-primary-300"
-                  } w-5 h-5 rounded-full transition-all duration-200 ease-in`}
+                  } timezone-switch-circle`}
               ></span>
             </div>
           </div>
         </div>
       </div>
 
-      <button onClick={handleSavedChanges} className={buttonStyle}>
+      <button onClick={handleSavedChanges} className="primary-button">
         Save Changes
       </button>
     </div>
@@ -225,7 +216,7 @@ const NotificationTab = (): JSX.Element => {
           label="Mentor Help"
         />
       </div>
-      <button onClick={handleSavedChanges} className={buttonStyle}>
+      <button onClick={handleSavedChanges} className="primary-button">
         Save Changes
       </button>
     </div>

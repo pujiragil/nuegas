@@ -73,3 +73,27 @@ input[type="range"]::-moz-range-thumb {
   min-width: 0px;
   width: 0;
 }
+
+.primary-button {
+  @apply w-full py-3 rounded-xl bg-tertiary-100 text-primary-100 text-sm font-semibold md:w-2/6;
+}
+
+.dropdown {
+  @apply cursor-pointer font-medium text-xs flex items-center justify-between px-5 py-4 rounded-xl border border-primary-300  transition-all duration-300 ease-in-out;
+}
+
+.dropdown:hover {
+  @apply hover:bg-primary-300;
+}
+
+.dropdown-arrow {
+  @apply transition-all duration-200 ease-in w-5 h-5 object-cover;
+}
+
+.timezone-switch-button {
+  @apply cursor-pointer py-4 px-5 rounded-xl border flex items-center gap-4 md:w-full md:gap-0 md:justify-between transition-all duration-300 ease-in-out;
+}
+
+.timezone-switch-circle {
+  @apply w-5 h-5 rounded-full transition-all duration-200 ease-in;
+}
