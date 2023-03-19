@@ -14,7 +14,7 @@ const Head: FC<HeadProps> = ({
   value,
 }): ReactElement => {
   let className: string = [
-    "text-secondary-100",
+    "text-secondary-100 group-hover:text-primary-100",
     fontWeight,
     typeof fontSize === "string" ? fontSize : fontSize.join(" "),
   ].join(" ");
