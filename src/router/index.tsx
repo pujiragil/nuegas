@@ -8,6 +8,8 @@ import {
   Settings,
   Task,
   TaskDetail,
+  Register,
+  Login,
 } from "../pages";
 
 const router = createBrowserRouter([
@@ -52,6 +54,14 @@ const router = createBrowserRouter([
         element: <Settings />,
       },
     ],
+  },
+  {
+    path: "auth/register",
+    element: <Register />,
+  },
+  {
+    path: "auth/login",
+    element: <Login />,
   },
 ]);
 

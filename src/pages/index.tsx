@@ -6,3 +6,5 @@ export { default as Mentors } from "./Mentors";
 export { default as Message } from "./Message";
 export { default as MessageRoom } from "./Message/MessageRoom";
 export { default as Settings } from "./Settings";
+export { default as Register } from "./Auth/register";
+export { default as Login } from "./Auth/login";
