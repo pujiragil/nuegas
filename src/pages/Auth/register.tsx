@@ -21,6 +21,7 @@ const Register = () => {
     password: "",
     role: "Student",
   });
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [errors, setErrors] = useState<ErrorProps[]>([]);
 
   const handleChange = (
@@ -34,6 +35,7 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_BASE_URL}/auth/register`,
@@ -52,6 +54,8 @@ const Register = () => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -102,6 +106,7 @@ const Register = () => {
           className="bg-primary-100 py-2 px-4 rounded-xl cursor-pointer"
           type="submit"
           value="Register Now"
+          disabled={isSubmitting}
         />
       </form>
     </div>
