@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 type RegisterProps = {
   username: string;
@@ -7,11 +7,15 @@ type RegisterProps = {
   role: "Student" | "Teacher";
 };
 
-type ErrorProps = {
+type ErrorObj = {
   value: string;
   msg: string;
   param: string;
   location: string;
+};
+
+type ErrorProps = {
+  [key: string]: ErrorObj;
 };
 
 const Register = () => {
@@ -22,7 +26,7 @@ const Register = () => {
     role: "Student",
   });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [errors, setErrors] = useState<ErrorProps[]>([]);
+  const [errors, setErrors] = useState<ErrorProps>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -58,6 +62,15 @@ const Register = () => {
       setIsSubmitting(false);
     }
   };
+
+  useEffect(() => {
+    if (errors.length) {
+      const errObj = errors.reduce((obj, err): any => {
+        return { obj, err };
+      });
+      console.log(errObj);
+    }
+  }, [errors]);
 
   return (
     <div className="max-w-screen-2xl mx-auto flex justify-center">
@@ -103,7 +116,7 @@ const Register = () => {
           <option value="Teacher">Teacher</option>
         </select>
         <input
-          className="bg-primary-100 py-2 px-4 rounded-xl cursor-pointer"
+          className="bg-primary-100 py-2 px-4 rounded-xl cursor-pointer disabled:opacity-70"
           type="submit"
           value="Register Now"
           disabled={isSubmitting}
