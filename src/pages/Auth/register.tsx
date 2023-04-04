@@ -1,22 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ErrorProps } from "../../types";
 
 type RegisterProps = {
   username: string;
   email: string;
   password: string;
   role: "Student" | "Teacher";
-};
-
-type ErrorObj = {
-  value: string;
-  msg: string;
-  param: string;
-  location: string;
-};
-
-type ErrorProps = {
-  [key: string]: ErrorObj;
 };
 
 const Register = () => {
@@ -27,7 +17,7 @@ const Register = () => {
     role: "Student",
   });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [errors, setErrors] = useState<ErrorProps>({});
+  const [error, setError] = useState<ErrorProps>({});
   const navigate = useNavigate();
 
   const handleChange = (
@@ -55,7 +45,7 @@ const Register = () => {
       if (response.ok) {
         navigate("/auth/login");
       } else {
-        setErrors(responseData.errors);
+        setError(responseData.errors);
       }
     } catch (err) {
       console.log(err);
@@ -70,7 +60,7 @@ const Register = () => {
         onSubmit={handleSubmit}
         className="flex flex-col w-1/3 bg-tertiary-100 p-8 rounded-xl flex flex-col gap-4"
       >
-        {errors?.username && <p>username error bang</p>}
+        {error?.username && <p>username error bang</p>}
         <input
           className="py-2 px-4 rounded-xl outline-none"
           type="text"
@@ -80,7 +70,7 @@ const Register = () => {
           placeholder="username"
           required
         />
-        {errors?.email && <p>email error bang</p>}
+        {error?.email && <p>email error bang</p>}
         <input
           className="py-2 px-4 rounded-xl outline-none"
           type="email"
@@ -90,7 +80,7 @@ const Register = () => {
           placeholder="email"
           required
         />
-        {errors?.password && <p>password error bang</p>}
+        {error?.password && <p>password error bang</p>}
         <input
           className="py-2 px-4 rounded-xl outline-none"
           type="password"
@@ -100,7 +90,7 @@ const Register = () => {
           placeholder="password"
           required
         />
-        {errors?.role && <p>role error bang</p>}
+        {error?.role && <p>role error bang</p>}
         <select
           value={register.role}
           onChange={handleChange}
