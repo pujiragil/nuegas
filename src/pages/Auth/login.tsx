@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useAuth from "../../store/authStore";
 import { ErrorProps } from "../../types";
 
 type LoginProps = {
@@ -10,6 +11,8 @@ const Login = () => {
   const [login, setLogin] = useState<LoginProps>({ email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [error, setError] = useState<ErrorProps>({});
+
+  const setAccessToken = useAuth((state) => state.setAccessToken);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -34,6 +37,7 @@ const Login = () => {
       );
       const responseData = await response.json();
       if (response.ok) {
+        setAccessToken(responseData?.accessToken);
         console.log(responseData);
         alert("ok");
       } else {
