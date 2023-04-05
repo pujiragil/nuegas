@@ -9,7 +9,26 @@ import TaskSlider from "../../components/Slider/Task";
 import { mentorSliders } from "../../utils/mentor";
 import { taskSliders } from "../../utils/task";
 
+import useSWR from "swr";
+import useAuth from "../../store/authStore";
+
 const Dashboard = (): ReactElement => {
+  const accessToken = useAuth((state) => state.accessToken);
+  const { data, error } = useSWR("/users/info", async () => {
+    const response = await fetch("http://localhost:5000/users/info", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Failed to fetch user info");
+    }
+    return response.json();
+  });
+
+  if (error) return <p>Error bang</p>;
+  console.log(data);
+
   return (
     <div className="flex flex-col md:flex-row">
       <div className="w-full md:w-7/12 lg:w-8/12">
