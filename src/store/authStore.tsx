@@ -3,6 +3,7 @@ import { persist } from "zustand/middleware";
 
 type State = {
   accessToken: string | null;
+  isAuthenticated: boolean;
 };
 
 type Action = {
@@ -13,9 +14,12 @@ type Action = {
 const useAuth = create<State & Action>()(
   persist(
     (set) => ({
+      isAuthenticated: false,
       accessToken: null,
-      setAccessToken: (accessToken) => set({ accessToken }),
-      clearAccessToken: () => set({ accessToken: null }),
+      setAccessToken: (accessToken) =>
+        set({ accessToken, isAuthenticated: true }),
+      clearAccessToken: () =>
+        set({ accessToken: null, isAuthenticated: false }),
     }),
     {
       name: "auth-store",
