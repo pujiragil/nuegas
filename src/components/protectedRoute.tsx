@@ -1,17 +1,43 @@
-import { FC, ReactNode } from "react";
+import jwtDecode from "jwt-decode";
+import { FC } from "react";
 import { Navigate } from "react-router-dom";
-import { useUser } from "../utils/auth";
+import useAuth from "../store/authStore";
 
-interface ProtectedRouteProps {
-  children: ReactNode;
+interface JWTPayload {
+  username: string;
+  id: string;
+  role: string;
+  iat: number;
+  exp: number;
 }
 
-const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }): any => {
-  const { error, isLoading } = useUser();
+const validateToken = (token: string): boolean => {
+  try {
+    const decoded = jwtDecode<JWTPayload>(token);
+    const currentTime = Date.now() / 1000;
+    return (
+      decoded.username !== undefined &&
+      decoded.role !== undefined &&
+      decoded.id !== undefined &&
+      decoded.exp >= currentTime
+    );
+  } catch (error) {
+    return false;
+  }
+};
 
-  if (isLoading) return <p>Loading content...</p>;
+interface ProtectedRouteProps {
+  children: any;
+}
 
-  return error ? <Navigate to="/auth/login" replace={true} /> : children;
+const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
+  const accessToken = useAuth((state) => state.accessToken);
+  if (!accessToken) return <Navigate to="/auth/login" replace={true} />;
+  return validateToken(accessToken) ? (
+    children
+  ) : (
+    <Navigate to="/auth/login" replace={true} />
+  );
 };
 
 export default ProtectedRoute;
