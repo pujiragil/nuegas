@@ -2,24 +2,22 @@ import useSWR from "swr";
 import useAuth from "../store/authStore";
 
 type TransformUserResponse = {
-  data: {
-    id: string;
-    username: string;
-    email: string;
-    avatar: string | null;
-    role: string;
-  };
+  id: string;
+  username: string;
+  email: string;
+  avatar: string | null;
+  role: string;
 };
 
 function transformUserResponse(
   responseData: TransformUserResponse
-): TransformUserResponse["data"] {
+): TransformUserResponse {
   return {
-    id: responseData.data.id,
-    username: responseData.data.username,
-    email: responseData.data.email,
-    avatar: responseData.data.avatar,
-    role: responseData.data.role,
+    id: responseData.id,
+    username: responseData.username,
+    email: responseData.email,
+    avatar: responseData.avatar,
+    role: responseData.role,
   };
 }
 
@@ -41,9 +39,7 @@ export const useUser = () => {
         throw errorData;
       }
       const responseData = await response.json();
-      const transformed = transformUserResponse(responseData);
-      console.log({ responseData, transformed });
-      return transformUserResponse(responseData);
+      return transformUserResponse(responseData.data);
     } catch (error) {
       throw error;
     }
