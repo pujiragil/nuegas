@@ -1,11 +1,11 @@
 import jwtDecode from "jwt-decode";
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Navigate } from "react-router-dom";
 import useAuth from "../store/authStore";
 
 interface JWTPayload {
   username: string;
-  id: string;
+  userId: string;
   role: string;
   iat: number;
   exp: number;
@@ -14,25 +14,27 @@ interface JWTPayload {
 const validateToken = (token: string): boolean => {
   try {
     const decoded = jwtDecode<JWTPayload>(token);
-    const currentTime = Date.now() / 1000;
-    return (
+    const isExpired: boolean = decoded.exp < Date.now() / 1000;
+    const isPayloadExist: boolean =
       decoded.username !== undefined &&
       decoded.role !== undefined &&
-      decoded.id !== undefined &&
-      decoded.exp >= currentTime
-    );
+      decoded.userId !== undefined;
+
+    return !isExpired && isPayloadExist;
   } catch (error) {
     return false;
   }
 };
 
 interface ProtectedRouteProps {
-  children: any;
+  children: ReactNode;
 }
 
-const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }) => {
+const ProtectedRoute: FC<ProtectedRouteProps> = ({ children }): any => {
   const accessToken = useAuth((state) => state.accessToken);
+
   if (!accessToken) return <Navigate to="/auth/login" replace={true} />;
+
   return validateToken(accessToken) ? (
     children
   ) : (
