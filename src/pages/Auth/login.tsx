@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../store/authStore";
+
 import { ErrorProps } from "../../types";
 
 type LoginProps = {
@@ -13,7 +15,7 @@ const Login = () => {
   const [error, setError] = useState<ErrorProps>({});
 
   const setAccessToken = useAuth((state) => state.setAccessToken);
-
+  const navigate = useNavigate();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLogin((prevLogin) => {
@@ -38,8 +40,7 @@ const Login = () => {
       const responseData = await response.json();
       if (response.ok) {
         setAccessToken(responseData?.accessToken);
-        console.log(responseData);
-        alert("ok");
+        navigate("/", { replace: true })
       } else {
         setError(responseData.error);
       }
