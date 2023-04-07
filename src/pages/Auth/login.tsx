@@ -40,7 +40,7 @@ const Login = () => {
       const responseData = await response.json();
       if (response.ok) {
         setAccessToken(responseData?.accessToken);
-        navigate("/", { replace: true })
+        navigate("/", { replace: true });
       } else {
         setError(responseData.error);
       }

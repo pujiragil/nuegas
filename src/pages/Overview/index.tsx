@@ -9,29 +9,10 @@ import TaskSlider from "../../components/Slider/Task";
 import { mentorSliders } from "../../utils/mentor";
 import { taskSliders } from "../../utils/task";
 
-import useSWR from "swr";
-import useAuth from "../../store/authStore";
+import { useUser } from "../../utils/auth";
 
 const Dashboard = (): ReactElement => {
-  const accessToken = useAuth((state) => state.accessToken);
-  const { data, error, isLoading } = useSWR("/users/info", async () => {
-    try {
-      const response = await fetch("http://localhost:5000/users/info", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw errorData;
-      }
-
-      return response.json();
-    } catch (error) {
-      throw error;
-    }
-  });
+  const { data, error, isLoading } = useUser();
 
   if (isLoading) return <p>Loading bang</p>;
 
@@ -42,7 +23,7 @@ const Dashboard = (): ReactElement => {
       <div className="w-full md:w-7/12 lg:w-8/12">
         {/* Profile Layout */}
         <ProfileLayout
-          titleProfile="Hi, Masbro"
+          titleProfile={`Hi, ${data?.username || "Masbro"}`}
           descProfile="Let's finish your task today!"
         />
 
